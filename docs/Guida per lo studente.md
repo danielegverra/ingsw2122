@@ -113,13 +113,13 @@ L'intervento iniziale a voi richiesto deve essere svolto da *un solo membro del 
 Il membro del team, avendo i diritti di amministratore sul repository, deve:
 
 - entrare nella pagina delle impostazioni del proprio profilo GitHub (click sull'immagine di profilo in alto a destra, poi click sulla voce *"Settings"* nel menù a tendina che compare);
-  ![SaveTokenInSecret_1](./img/SaveTokenInSecret_1.png)
+  ![SaveTokenInSecret_1](./img/new_SaveTokenInSecret_1.jpg)
 
 - entrare nella sezione delle impostazioni per sviluppatori, *"Developer Settings"*, facendo click sul relativo pulsante nella barra laterale;
-  ![SaveTokenInSecret_2](./img/SaveTokenInSecret_2.png)
+  ![SaveTokenInSecret_2](./img/new_SaveTokenInSecret_2.jpg)
 
 - selezionare *"Personal Access Token"* nella barra laterale e successivamente fare click su *"Generate new Token"*, in alto a destra; 
-  ![SaveTokenInSecret_3](./img/SaveTokenInSecret_3.png)
+  ![SaveTokenInSecret_3](./img/new_SaveTokenInSecret_3.jpg)
 
 - indicare nel campo *"Note"* l'utilizzo che si intende fare del token (ad es.: *"Uploads of Docker images to GitHub Packages"*). Tale appunto tornerà utile in futuro per ricordarsi a quale scopo era stato generato il token;
 
@@ -129,7 +129,7 @@ Il membro del team, avendo i diritti di amministratore sul repository, deve:
   - `write:packages`
   - `read:packages`
 
-  ![SaveTokenInSecret_4](./img/SaveTokenInSecret_4.png)
+  ![SaveTokenInSecret_4](./img/new_SaveTokenInSecret_4.jpg)
 
 - fare click sul pulsante *"Generate token"*, in basso nella pagina;
 - copiare il token che apparirà alla pagina seguente e memorizzarlo in un luogo sicuro.
@@ -143,11 +143,11 @@ A questo punto, il membro del team che ha generato il token dovrà:
 
 - recarsi sulla pagina principale del repository e fare click sull'icona *"Settings"* (ultima tab in alto a destra);
   **N.B.**: solo l'amministratore visualizza questa tab!
-  ![SaveTokenInSecret_5](./img/SaveTokenInSecret_5.png)
+  ![SaveTokenInSecret_5](./img/new_SaveTokenInSecret_5.jpg)
 - selezionare la voce *"Secrets"* e la sottovoce *"Actions"* dalla barra laterale;
-  ![SaveTokenInSecret_6](./img/SaveTokenInSecret_6.png)
+  ![SaveTokenInSecret_6](./img/new_SaveTokenInSecret_6.jpg)
 - fare click sul pulsante *"New repository secret"*:
- ![SaveTokenInSecret_6](./img/SaveTokenInSecret_7.png)
+ ![SaveTokenInSecret_6](./img/new_SaveTokenInSecret_7.jpg)
   - inserire la stringa `GH_ACCESS_TOKEN` nella textbox con l'etichetta *"Name"*;
   - inserire il Personal Access Token precedentemente generato nella textarea con l'etichetta *"Value"*;
   - concludere l'operazione cliccando sul pulsante *"Add secret"*.
@@ -162,16 +162,16 @@ A questo punto, il membro del team che ha generato il token dovrà:
 ## Aggiunta del badge di GitHub Actions nel README
 Per aggiungere il badge che riporta l'ultimo esito dell'esecuzione del workflow (stato del workflow) all'interno del file README del vostro repository, seguire le seguenti istruzioni:
 - entrare nella pagina principale del repository e cliccare su `Actions` (subito sotto il titolo, in alto al centro);
-![Update_GitHub_badge_1](./img/Update_GitHub_badge_1.png)
+![Update_GitHub_badge_1](./img/new_Update_GitHub_badge_1.jpg)
 - *"All workflows"*, riporta l'elenco delle esecuzioni del workflow  `ingsw2122.yml` (ogni push e ogni pull request sul repository inducono una nuova esecuzione); fare click sul record relativo alla run più recente (quello più in alto) che riporta il tag `master` (**N.B.**: svolgendo questa operazione all'inizio del progetto, in questa lista troverete soltanto un record, quello relativo all'unica esecuzione del workflow indotta dalla creazione del repository);
-  ![Update_GitHub_badge_2](./img/Update_GitHub_badge_2.png)
+  ![Update_GitHub_badge_2](./img/new_Update_GitHub_badge_2.jpg)
 - fare click sul pulsante `Create status badge` in alto a destra nella pagina e, lasciando invariate le impostazioni di default (`branch` e `event`), fare click su `Copy status badge Markdown`;
-  ![Update_GitHub_badge_3](./img/Update_GitHub_badge_3.png)
+  ![Update_GitHub_badge_3](./img/new_Update_GitHub_badge_3.jpg)
 - La modifica del file Markdown `README.md`sarà fatta come parte dei task dello *Sprint 0* incollando il codice markdown per la costruzione del badge in cima al `README.md`, accanto al titolo del repository.
 
 Il titolo del README.md dovrà apparire come nella seguente figura, con *Wordle* al posto di *scacchi*:
 
-![actions-badge](./img/actions-badge.png)
+![actions-badge](./img/new_actions-badge.jpg)
 
 Il colore e lo stato del badge potranno cambiare dopo ogni build, riflettendo lo stato del progetto.
 
@@ -184,7 +184,7 @@ Per configurare Coveralls, collegarsi al [sito web del servizio](https://coveral
 Il repository `SOFTENG2122-INF-UNIBA/<nome repository>` dovrebbe essere immediatamente visibile nella pagina. Qualora non lo fosse, digitare le prime lettere del nome nel campo di testo. Se così facendo ancora non fosse visibile, andare in fondo alla pagina e cliccare sul pulsante **REFRESH PRIVATE REPOS**. 
 Quando la riga relativa al progetto compare, fare click sul tasto OFF per trasformarlo in ON, come mostrato in figura.
 
-![](./img/add_repo_coveralls.png)
+![](./img/new_add_repo_coveralls.jpg)
 
 Una volta attivato il progetto, fare click su **DETAILS** per visualizzare il _token privato_ associato al repository. Questo token andrà salvato in un Secret di GitHub denominato `COVERALLS_REPO_TOKEN`, seguendo la procedura riportata al passo precedente per il salvataggio del GitHub Access Token. Più precisamente:
 
@@ -206,12 +206,12 @@ Come GitHub Actions, anche Coveralls permette di arricchire il `README` del vost
 I passi per ottenere il badge di Coveralls sono i seguenti:
 
 - tornare sulla pagina "Details" dedicata al vostro repository sul sito di Coveralls (dove avete copiato il token). In uno dei riquadri in alto nella pagina è riportato il badge da aggiungere al README. Fare click sul tasto `EMBED` (vd. figura); 
-  ![CoverallsBadge_1](./img/CoverallsBadge_1.png)
+  ![CoverallsBadge_1](./img/new_CoverallsBadge_1.jpg)
 - copiare il codice markdown per la richiesta del badge;
-  ![CoverallsBadge_2](./img/CoverallsBadge_2.png)
+  ![CoverallsBadge_2](./img/new_CoverallsBadge_2.jpg)
 - La modifica del file Markdown `README.md`sarà fatta come parte dei task dello *Sprint 0* incollando il codice markdown per la costruzione del badge in cima al `README.md`, accanto al titolo del repository.
 - Alla fine, il file `README.md` dovrà mostrare due badge, simili a quelli riportati nella figura sottostante, con *Wordle* al posto di *scacchi*:
-![actions+coveralls-badges](./img/actions+coveralls-badges.png)
+![actions+coveralls-badges](./img/new_actions+coveralls-badges.jpg)
 
 #### Troubleshooting
 
