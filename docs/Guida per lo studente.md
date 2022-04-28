@@ -162,7 +162,7 @@ A questo punto, il membro del team che ha generato il token dovrà:
 Affinché tutti i membri del team possano visualizzare e scaricare l'immagine Docker del proprio progetto da GitHub Packages, è necessario che colui che ha inserito il proprio Personal Access Token tra i secret del repository svolga i seguenti passaggi:
 1. accedere al proprio repository su GitHub;
 2. cliccare sul link del package associato al repository; il link è collocato nella barra laterale destra della pagina principale del repository, sotto l'intestazione "Packages"
-(vedi freccia rossa in figura); ![ExecuteDockerImage_1](./img/ExecuteDockerImage_1.png)
+(vedi freccia rossa in figura); ![ExecuteDockerImage_1](./img/new_ExecuteDockerImage_1.png)
 N.B.: il package sarà visibile solo dopo che GitHub Actions avrà completato con successo la prima build del progetto;
 3. cliccare sul link "Package settings", presente nella pagina dedicata al package come ultima voce nella barra laterale destra (vedi freccia rossa in figura); ![ExecuteDockerImage_1](./img/packageSettings.png)
 4. scorrere in basso, sino all'intestazione "Manage access"; aggiungere il proprio team alla lista dei membri, conferendo allo stesso i permessi di "Admin" (vedi freccia rossa in figura); ![ExecuteDockerImage_1](./img/manageAccess.png).
