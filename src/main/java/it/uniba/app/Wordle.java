@@ -14,7 +14,7 @@ public class Wordle {
 
     private static String parolaSegreta;
     private static int dimensioneParola = 5;
-    //private static String ruoloUtente;
+    private static String ruoloUtente;
 
     /**
      * METODI
@@ -57,6 +57,14 @@ public class Wordle {
         dimensioneParola = dim;
     }
 
+    public static String getRuoloUtente(){
+        return new String(ruoloUtente);
+    }
+
+    public static void setRuoloUtente(String s){
+        ruoloUtente = new String(s);
+    }
+
     public static void inputComando(){
         System.out.print("\nInserire un comando:\n> ");
         Scanner sc = new Scanner(System.in);
@@ -65,7 +73,6 @@ public class Wordle {
         parserWordle(s);
         sc.close();
     }
-
     
     private static String[] scannerWordle(String c){
         String s[] = c.split(" ");
