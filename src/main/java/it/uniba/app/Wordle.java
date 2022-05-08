@@ -6,16 +6,31 @@ package it.uniba.app;
  */
 public class Wordle {
     
-    // ATTRIBUTI
-    private String parolaSegreta;
+    /**
+     * ATTRIBUTI
+    */
 
-    // METODI
-    public String getParolaSegreta(){
+    private static String parolaSegreta;
+    private static int dimensioneParola = 5;
+
+    /**
+     * METODI
+    */
+
+    public static String getParolaSegreta(){
         return new String(parolaSegreta);
     }
     
-    public void setParolaSegreta(String p){
-        parolaSegreta = p;
+    public static void setParolaSegreta(String p){
+        parolaSegreta = new String(p);
+    }
+
+    public static int getDimensioneParola(){
+        return dimensioneParola;
+    }
+
+    public static void setDimensioneParola(int dim){
+        dimensioneParola = dim;
     }
 
 }
