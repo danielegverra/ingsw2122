@@ -25,11 +25,28 @@ public class Wordle {
     }
     
     public static void setParolaSegreta(String p){
-        if(p.length() == dimensioneParola){
-            parolaSegreta = new String(p);
-        }/*else{
-            gestire eccezione !!!
-        }*/
+        if(p.length() > dimensioneParola){
+            //gestisci eccezione '>'
+        }else{
+            if(p.length() < dimensioneParola){
+                //gestisci eccezione '<'
+            }else{
+                if(!parolaValida(p)){
+                    //gestisci eccezione 'non valida'
+                }else{
+                    parolaSegreta = new String(p);
+                }
+            }
+        }
+    }
+
+    private static boolean parolaValida(String s){
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) > 90 || s.charAt(i) < 65){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static int getDimensioneParola(){
@@ -43,7 +60,7 @@ public class Wordle {
     public static void inputComando(){
         System.out.print("\nInserire un comando:\n> ");
         Scanner sc = new Scanner(System.in);
-        String c = sc.nextLine();
+        String c = sc.nextLine().toUpperCase();
         String s[] = scannerWordle(c);
         parserWordle(s);
         sc.close();
@@ -70,7 +87,7 @@ public class Wordle {
     }
     
     private static void parserWordle(String s[]){
-        if(s[0].equals("/nuova")){
+        if(s[0].equals("/NUOVA")){
             if(s[1] != null){
                 setParolaSegreta(s[1]);
             }else{
