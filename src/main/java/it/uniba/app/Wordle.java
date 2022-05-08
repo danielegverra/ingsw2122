@@ -96,7 +96,7 @@ public class Wordle {
     private static void parserWordle(String s[]){
         if(s[0].equals("/NUOVA")){
             if(s[1] != null){
-                setParolaSegreta(s[1]);
+                Paroliere.impostaParolaSegreta(s[1]);
             }else{
                 //gestisci eccezione
             }
