@@ -22,7 +22,11 @@ public class Wordle {
     }
     
     public static void setParolaSegreta(String p){
-        parolaSegreta = new String(p);
+        if(p.length() != dimensioneParola){
+            parolaSegreta = new String(p);
+        }/*else{
+            gestire eccezione !!!
+        }*/
     }
 
     public static int getDimensioneParola(){
@@ -31,6 +35,12 @@ public class Wordle {
 
     public static void setDimensioneParola(int dim){
         dimensioneParola = dim;
+    }
+
+    public static void parserWordle(String s[]){
+        if(s[0].equals("/nuova")){
+            setParolaSegreta(s[1]);
+        }
     }
 
 }
