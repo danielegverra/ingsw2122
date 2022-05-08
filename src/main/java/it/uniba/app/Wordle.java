@@ -76,7 +76,6 @@ public class Wordle {
             }else{
                 //gestisci eccezione
             }
-            
         }
     }
 
