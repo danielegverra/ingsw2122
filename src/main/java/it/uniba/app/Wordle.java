@@ -35,6 +35,7 @@ public class Wordle {
                     //gestisci eccezione 'non valida'
                 }else{
                     parolaSegreta = new String(p);
+                    System.out.println("OK");
                 }
             }
         }
