@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Questa classe è di tipo ' '.
- * Si occupa di 
+ * Si occupa di gestire il nucleo del gioco.
  */
 public class Wordle {
     
@@ -17,9 +17,9 @@ public class Wordle {
     private static String ruoloUtente;
 
     /**
-     * METODI
-    */
-
+     * METODI DI ACCESSO
+     */
+    
     public static String getParolaSegreta(){
         return new String(parolaSegreta);
     }
@@ -40,15 +40,6 @@ public class Wordle {
         }
     }
 
-    private static boolean parolaValida(String s){
-        for(int i=0; i<s.length(); i++){
-            if(s.charAt(i) > 90 || s.charAt(i) < 65){
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static int getDimensioneParola(){
         return dimensioneParola;
     }
@@ -65,6 +56,28 @@ public class Wordle {
         ruoloUtente = new String(s);
     }
 
+    /**
+     * METODI
+    */
+
+    /**
+     * Questo metodo controlla che nella parola non ci siano
+     * caratteri che non appartengono all'alfabeto.
+     */
+    private static boolean parolaValida(String s){
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) > 90 || s.charAt(i) < 65){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Questo metodo permette di ricevere il comando dell'utente
+     * da tastiera, ne controlla la sintassi (scanner) e richiama
+     * il metodo adeguato (parser).
+     */
     public static void inputComando(){
         System.out.print("\nInserire un comando:\n> ");
         Scanner sc = new Scanner(System.in);
@@ -74,6 +87,10 @@ public class Wordle {
         sc.close();
     }
     
+    /**
+     * Questo metodo controlla la validità sintattica del
+     * comando dato in input.
+     */
     private static String[] scannerWordle(String c){
         String s[] = c.split(" ");
         if(s[0].charAt(0) != '/'){
@@ -93,6 +110,10 @@ public class Wordle {
         return s;
     }
     
+    /**
+     * Questo metodo associa ad ogni comando il rispettivo metodo
+     * da richiamare.
+     */
     private static void parserWordle(String s[]){
         if(s[0].equals("/NUOVA")){
             if(s[1] != null){
