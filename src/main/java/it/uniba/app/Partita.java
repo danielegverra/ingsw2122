@@ -40,6 +40,19 @@ public class Partita {
     }
 
     public void setGrigliaTentativi(int index, String tentativo) {
-        grigliaTentativi[index]= new String(tentativo);
+        grigliaTentativi[index] = new String(tentativo);
+    }
+
+    /**
+     * METODI
+     */
+    public Partita(int tentativiEffettuati, int maxTentativi, String parolaSegreta) {
+        this.tentativiEffettuati = tentativiEffettuati;
+        this.maxTentativi = maxTentativi;
+        this.parolaSegreta = new String(parolaSegreta);
+        grigliaTentativi = new String[this.maxTentativi];
+        for(int i=0; i<this.grigliaTentativi.length; i++){
+            grigliaTentativi[i] = new String("");
+        }
     }
 }
