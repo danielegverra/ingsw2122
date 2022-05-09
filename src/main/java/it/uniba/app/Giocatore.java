@@ -11,10 +11,10 @@ public class Giocatore {
         Scanner sc = new Scanner(System.in);
         while(p.getTentativiEffettuati() < p.getMaxTentativi()){
             System.out.print("Inserisci il tuo tentativo:\n>");
-            String parolaTentata = sc.nextLine();
+            String parolaTentata = sc.nextLine().toUpperCase();
             while(parolaTentata.length() != p.getParola().length()){
                 System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + ":\n>");
-                parolaTentata= sc.nextLine();
+                parolaTentata= sc.nextLine().toUpperCase();
             }
             /** inserire tentativo*/
             p.setTentativiEffettuati(p.getTentativiEffettuati()+1);

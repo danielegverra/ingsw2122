@@ -131,6 +131,12 @@ public class Wordle {
             }else{
                 //gestisci eccezione
             }
+        }else if(s[0].equals("/GIOCA")){
+            if(s[1] == null){
+                Giocatore.iniziaPartita();
+            }else{
+                //gestisci eccezione
+            }
         }
     }
 
