@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Giocatore {
     public static void iniziaPartita(){
-        Partita p = new Partita(0, Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
+        Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
         System.out.println("Una nuova partita sta iniziando!");
         /** stampare l'help */
         /** stampare griglia vuota */

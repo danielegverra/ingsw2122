@@ -46,8 +46,8 @@ public class Partita {
     /**
      * METODI
      */
-    public Partita(int tentativiEffettuati, int maxTentativi, String parolaSegreta) {
-        this.tentativiEffettuati = tentativiEffettuati;
+    public Partita(int maxTentativi, String parolaSegreta) {
+        this.tentativiEffettuati = 0;
         this.maxTentativi = maxTentativi;
         this.parolaSegreta = new String(parolaSegreta);
         grigliaTentativi = new String[this.maxTentativi];
