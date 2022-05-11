@@ -65,8 +65,8 @@ public class Giocatore {
         /**
          * per ogni posizione, 0=grigio 1=verde 2=giallo
         */
-        
-        Integer[] coloriLettereTentate = new Integer[parolaSegreta.length()];
+
+        Integer[] coloriLettereTentate = calcolaColori(parolaTentata, parolaSegreta);
 
         /**Controllo sulla correttezza della singola lettera */
         
@@ -88,6 +88,34 @@ public class Giocatore {
             System.out.print("     |");
         }
     } 
+
+    private static Integer[] calcolaColori(String parolaTentata, String parolaSegreta){
+        Integer[] coloriLettereSegrete = new Integer[parolaSegreta.length()];
+        Integer[] coloriLettereTentate = new Integer[parolaSegreta.length()];
+
+        for(int i = 0; i < coloriLettereSegrete.length; i++){
+            coloriLettereTentate[i] = 0;
+            coloriLettereSegrete[i] = 0;
+        }
+        for(int i = 0; i < coloriLettereSegrete.length; i++){
+            if(parolaTentata.charAt(i) == parolaSegreta.charAt(i)){
+                coloriLettereTentate[i] = 1;
+                coloriLettereSegrete[i] = 1;
+            }
+        }
+        for(int i = 0; i < coloriLettereSegrete.length; i++){
+            if(coloriLettereTentate[i] == 0){
+                for(int j = 0; j < coloriLettereSegrete.length && coloriLettereTentate[i] == 0; j++){
+                    if(coloriLettereSegrete[j] == 0 && parolaSegreta.charAt(j) == parolaTentata.charAt(i)){
+                        coloriLettereTentate[i] = 2;
+                        coloriLettereSegrete[j] = 2;
+                    }
+                }
+            }
+        }
+
+        return coloriLettereTentate;
+    }
 
 
 }
