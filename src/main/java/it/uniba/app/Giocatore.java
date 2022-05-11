@@ -47,7 +47,7 @@ public class Giocatore {
             if(p.getGrigliaTentativi(i).compareTo("") != 0){                                       //????
                 /**stampare riga */
             } else {
-                /**stampare riga vuota */
+                stampaRigaGrigliaVuota(p.getParola().length());
             }
             /** 
              * Stampa del separatore inferiore per ogni riga
@@ -60,6 +60,13 @@ public class Giocatore {
         }
 
     }
+
+    private static void stampaRigaGrigliaVuota(int lunghezza){
+        System.out.print("|");
+        for(int i = 0; i < lunghezza; i++){
+            System.out.print("     |");
+        }
+    } 
 
 
 }
