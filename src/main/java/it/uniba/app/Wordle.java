@@ -141,28 +141,28 @@ public class Wordle {
     }
 
     static void visualizzaComandi(){
-        System.out.println("\nAll'interno del gioco è possibile eseguire i seguenti comandi:");
+        System.out.println("\nAll'interno del gioco e' possibile eseguire i seguenti comandi:");
         System.out.println(" 1. /help: consente di visualizzare i comandi disponibili e le regole del gioco");
         System.out.println(" 2. /ruolo <parola>: consente di selezionare il ruolo di paroliere/giocatore");
         System.out.println(" 3. /ruolo: consente di mostrare il ruolo corrente");
         System.out.println(" 4. /esci: consente di chiudere l'applicazione a seguito di una conferma positiva dell'utente ");
 
-        System.out.println("\nDa paroliere è possibile eseguire i seguenti comandi: ");
+        System.out.println("\nDa paroliere e' possibile eseguire i seguenti comandi: ");
         System.out.println(" 1. /nuova <parola>: consente di impostare una nuova parola segreta, anche durante la sessione di gioco senza uscire dall'applicazione");
         System.out.println(" 2. /mostra: consente di visualizzare la parola segreta");
        
-        System.out.println("\nDa giocatore è possibile eseguire i seguenti comandi: ");
-        System.out.println(" 1. /gioca: consente di visualizzare la matrice dei tentativi vuota se nessuna partita è in corso");
+        System.out.println("\nDa giocatore e' possibile eseguire i seguenti comandi: ");
+        System.out.println(" 1. /gioca: consente di visualizzare la matrice dei tentativi vuota se nessuna partita e' in corso");
         System.out.println(" 2. /abbandona: consente di abbandonare la partita a seguito di una conferma positiva dell'utente\n");
     }
 
     static void visualizzaRegole(){
         System.out.println("Di seguito vengono mostrate le regole e il funzionamento del gioco:\n");
-        System.out.println("Lo scopo del gioco è indovinare una parola di cinque lettere utilizzando un massimo di sei tentativi.");
+        System.out.println("Lo scopo del gioco e' indovinare una parola di cinque lettere utilizzando un massimo di sei tentativi.");
         System.out.println("La parola segreta viene decisa dal paroliere, che per ogni tentativo restituisce tre tipi di indizi utili a restringere il cerchio sulla soluzione");
-        System.out.println("Ogni lettera indovinata nella posizione è segnata con una V,");
-        System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata è segnata con S,");
-        System.out.println("e ogni lettera del tutto assente dalla soluzione è segnata con X.");
+        System.out.println("Ogni lettera indovinata nella posizione e' segnata con una V,");
+        System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata e' segnata con S,");
+        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
     }
 
 
