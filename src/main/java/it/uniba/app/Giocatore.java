@@ -45,7 +45,7 @@ public class Giocatore {
         */
         for(int i = 0; i < p.getMaxTentativi(); i++){
             if(p.getGrigliaTentativi(i).compareTo("") != 0){                                       //????
-                /**stampare riga */
+                stampaRigaGriglia(p.getGrigliaTentativi(i), p.getParola());
             } else {
                 stampaRigaGrigliaVuota(p.getParola().length());
             }
@@ -59,6 +59,27 @@ public class Giocatore {
             System.out.print("\n");
         }
 
+    }
+
+    private static void stampaRigaGriglia(String parolaTentata, String parolaSegreta){
+        /**
+         * per ogni posizione, 0=grigio 1=verde 2=giallo
+        */
+        
+        Integer[] coloriLettereTentate = new Integer[parolaSegreta.length()];
+
+        /**Controllo sulla correttezza della singola lettera */
+        
+        System.out.print("|");
+        for(int i = 0; i < parolaSegreta.length(); i++){
+            if(coloriLettereTentate[i] == 0){
+                System.out.print("  " + parolaTentata.charAt(i) + " X|");
+            } else if(coloriLettereTentate[i] == 1){
+                System.out.print("  " + parolaTentata.charAt(i) + " G|");
+            } else if(coloriLettereTentate[i] == 2){
+                System.out.print("  " + parolaTentata.charAt(i) + " S|");
+            }
+        }
     }
 
     private static void stampaRigaGrigliaVuota(int lunghezza){
