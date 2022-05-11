@@ -136,7 +136,7 @@ public class Wordle {
                 Giocatore.iniziaPartita();
             }else{
                 //gestisci eccezione
-            }
+            }  
         }
     }
 

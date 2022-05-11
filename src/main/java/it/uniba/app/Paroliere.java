@@ -22,4 +22,16 @@ public class Paroliere {
             //gestisci eccezione 'ruolo'
         }
     }
+
+    public static void  visualizzaParola(){
+
+        if(Wordle.getParolaSegreta() != null)
+        {
+        System.out.println("La parola segreta è " + Wordle.getParolaSegreta());
+        }
+        else
+        {
+            System.out.println("Non è presente una parola segreta");
+        }
+    }
 }
