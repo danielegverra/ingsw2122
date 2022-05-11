@@ -15,6 +15,7 @@ public class Wordle {
     private static String parolaSegreta;
     private static int dimensioneParola = 5;
     private static String ruoloUtente;
+    private static int maxTentativi;
 
     /**
      * METODI DI ACCESSO
@@ -55,6 +56,14 @@ public class Wordle {
 
     public static void setRuoloUtente(String s){
         ruoloUtente = new String(s);
+    }
+
+    public static int getMaxTentativi() {
+        return maxTentativi;
+    }
+
+    public static void setMaxTentativi(int tent) {
+        maxTentativi = tent;
     }
 
     /**
@@ -119,6 +128,12 @@ public class Wordle {
         if(s[0].equals("/NUOVA")){
             if(s[1] != null){
                 Paroliere.impostaParolaSegreta(s[1]);
+            }else{
+                //gestisci eccezione
+            }
+        }else if(s[0].equals("/GIOCA")){
+            if(s[1] == null){
+                Giocatore.iniziaPartita();
             }else{
                 //gestisci eccezione
             }
