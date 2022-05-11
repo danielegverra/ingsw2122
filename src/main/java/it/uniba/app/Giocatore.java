@@ -7,7 +7,8 @@ public class Giocatore {
         if(Wordle.getParolaSegreta() != null){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             System.out.println("Una nuova partita sta iniziando!");
-            /** stampare l'help */
+            Wordle.visualizzaRegole();
+            Wordle.visualizzaComandi();
             /** stampare griglia vuota */
             Scanner sc = new Scanner(System.in);
             while(p.getTentativiEffettuati() < p.getMaxTentativi()){
