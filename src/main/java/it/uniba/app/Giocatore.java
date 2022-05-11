@@ -9,7 +9,7 @@ public class Giocatore {
             System.out.println("Una nuova partita sta iniziando!");
             Wordle.visualizzaRegole();
             Wordle.visualizzaComandi();
-            /** stampare griglia vuota */
+            stampaGriglia(p);
             Scanner sc = new Scanner(System.in);
             while(p.getTentativiEffettuati() < p.getMaxTentativi()){
                 System.out.print("Inserisci il tuo tentativo:\n>");
@@ -18,13 +18,48 @@ public class Giocatore {
                     System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + ":\n>");
                     parolaTentata= sc.nextLine().toUpperCase();
                 }
-                /** inserire tentativo*/
+                p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
                 p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
+                stampaGriglia(p);
+
+                /**controllo se la parola è giusta*/ 
+
             }
-            /** chiudere partita a partita indovinata */
             sc.close();
         }else{
             //gestisci eccezione
         }
     }
+
+    private static void stampaGriglia(Partita p){
+        /** 
+         * Stampa del separatore superiore
+        */
+        System.out.print(" ");
+        for (int j = 0; j < p.getParola().length(); j++){
+            System.out.print("~~~~~ ");
+        }
+        System.out.print("\n");
+        /** 
+         * Stampa delle righe
+        */
+        for(int i = 0; i < p.getMaxTentativi(); i++){
+            if(p.getGrigliaTentativi(i).compareTo("") != 0){                                       //????
+                /**stampare riga */
+            } else {
+                /**stampare riga vuota */
+            }
+            /** 
+             * Stampa del separatore inferiore per ogni riga
+             */
+            System.out.print("\n ");
+            for (int j = 0; j < p.getParola().length(); j++){
+                System.out.print("~~~~~ ");
+            }
+            System.out.print("\n");
+        }
+
+    }
+
+
 }
