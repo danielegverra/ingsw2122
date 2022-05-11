@@ -74,7 +74,7 @@ public class Wordle {
      * Questo metodo controlla che nella parola non ci siano
      * caratteri che non appartengono all'alfabeto.
      */
-    private static boolean parolaValida(String s){
+    public static boolean parolaValida(String s){
         for(int i=0; i<s.length(); i++){
             if(s.charAt(i) > 90 || s.charAt(i) < 65){
                 return false;

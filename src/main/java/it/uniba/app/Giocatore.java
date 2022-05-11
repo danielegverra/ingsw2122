@@ -14,8 +14,8 @@ public class Giocatore {
             while(p.getTentativiEffettuati() < p.getMaxTentativi()){
                 System.out.print("Inserisci il tuo tentativo:\n>");
                 String parolaTentata = sc.nextLine().toUpperCase();
-                while(parolaTentata.length() != p.getParola().length()){
-                    System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + ":\n>");
+                while(parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)){
+                    System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
                     parolaTentata= sc.nextLine().toUpperCase();
                 }
                 p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
