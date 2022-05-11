@@ -140,6 +140,24 @@ public class Wordle {
         }
     }
 
+    static void visualizzaComandi(){
+        System.out.println("\nAll'interno del gioco è possibile eseguire i seguenti comandi:");
+        System.out.println(" 1. /help: consente di visualizzare i comandi disponibili e le regole del gioco");
+        System.out.println(" 2. /ruolo <parola>: consente di selezionare il ruolo di paroliere/giocatore");
+        System.out.println(" 3. /ruolo: consente di mostrare il ruolo corrente");
+        System.out.println(" 4. /esci: consente di chiudere l'applicazione a seguito di una conferma positiva dell'utente ");
+
+        System.out.println("\nDa paroliere è possibile eseguire i seguenti comandi: ");
+        System.out.println(" 1. /nuova <parola>: consente di impostare una nuova parola segreta, anche durante la sessione di gioco senza uscire dall'applicazione");
+        System.out.println(" 2. /mostra: consente di visualizzare la parola segreta");
+       
+        System.out.println("\nDa giocatore è possibile eseguire i seguenti comandi: ");
+        System.out.println(" 1. /gioca: consente di visualizzare la matrice dei tentativi vuota se nessuna partita è in corso");
+        System.out.println(" 2. /abbandona: consente di abbandonare la partita a seguito di una conferma positiva dell'utente\n");
+    }
+
+    
+
     public static void main(String[] args) {
         inputComando();
         System.out.println(getParolaSegreta());
