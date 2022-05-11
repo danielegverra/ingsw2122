@@ -22,10 +22,13 @@ public class Giocatore {
                 p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
                 stampaGriglia(p);
 
-                /**controllo se la parola è giusta*/ 
+                if(parolaTentata.compareTo(p.getParola()) == 0){
+                    /**uscita dalla partita */
+                }
 
             }
             sc.close();
+            /**stampa partita persa se i tentativi sono di più */
         }else{
             //gestisci eccezione
         }
