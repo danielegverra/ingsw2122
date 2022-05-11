@@ -137,6 +137,19 @@ public class Wordle {
             }else{
                 //gestisci eccezione
             }  
+        }else if(s[0].equals("/HELP")){
+            if(s[1] == null){
+                visualizzaComandi();
+                visualizzaRegole();
+            }else{
+                //gestisci eccezione
+            }
+        }else if(s[1].equals("/MOSTRA")){
+            if(s[1] == null){
+                Paroliere.visualizzaParola();
+            }else{
+                //gestisci eccezione
+            }
         }
     }
 
