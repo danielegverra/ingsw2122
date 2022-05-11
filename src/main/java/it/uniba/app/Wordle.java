@@ -156,7 +156,17 @@ public class Wordle {
         System.out.println(" 2. /abbandona: consente di abbandonare la partita a seguito di una conferma positiva dell'utente\n");
     }
 
-    
+    static void visualizzaRegole(){
+        System.out.println("Di seguito vengono mostrate le regole e il funzionamento del gioco:\n");
+        System.out.println("Lo scopo del gioco è indovinare una parola di cinque lettere utilizzando un massimo di sei tentativi.");
+        System.out.println("La parola segreta viene decisa dal paroliere, che per ogni tentativo restituisce tre tipi di indizi utili a restringere il cerchio sulla soluzione");
+        System.out.println("Ogni lettera indovinata nella posizione è segnata con una V,");
+        System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata è segnata con S,");
+        System.out.println("e ogni lettera del tutto assente dalla soluzione è segnata con X.");
+    }
+
+
+
 
     public static void main(String[] args) {
         inputComando();
