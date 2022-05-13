@@ -17,12 +17,16 @@ public class Giocatore {
                 String parolaTentata = sc.nextLine().toUpperCase();
                 if(parolaTentata.equals("/ABBANDONA")){
                     partitaFinita = true;
+                    System.out.println("Hai deciso di abbandonare la partita!\n");
+                    System.out.println("Ci rivediamo presto!");
                 } else {
                     while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita){
                         System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
                         parolaTentata= sc.nextLine().toUpperCase();
                         if(parolaTentata.equals("/ABBANDONA")){
                             partitaFinita = true;
+                            System.out.println("Hai deciso di abbandonare la partita!\n");
+                            System.out.println("Ci rivediamo presto!");
                         }
                     }
                     if(!partitaFinita){
