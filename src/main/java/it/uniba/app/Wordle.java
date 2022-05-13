@@ -180,13 +180,13 @@ public class Wordle {
 
     static boolean richiediConferma(Scanner sc){
         System.out.println("Sei sicuro della tua scelta?");
-        System.out.println("Digita S se vuoi confermare la tua decisione");
+        System.out.println("\nDigita S se vuoi confermare la tua decisione");
         System.out.println("Digita N se vuoi tornare a giocare");
         String r = sc.nextLine().toUpperCase();
 
-        while(!r.equals("S") || !r.equals("N")){
+        while(!r.equals("S") && !r.equals("N")){
             System.out.println("Non hai inserito una parola valida!");
-            System.out.println("Inserisci S o N");
+            System.out.println("\nInserisci S o N:");
             r = sc.nextLine().toUpperCase();
         }
 

@@ -15,16 +15,16 @@ public class Giocatore {
             while(p.getTentativiEffettuati() < p.getMaxTentativi() && !partitaFinita){
                 System.out.print("Inserisci il tuo tentativo:\n>");
                 String parolaTentata = sc.nextLine().toUpperCase();
-                if(parolaTentata.equals("/ABBANDONA")){
-                    partitaFinita = Wordle.richiediConferma(sc);
+                if(parolaTentata.equals("/ABBANDONA") && Wordle.richiediConferma(sc)){
+                    partitaFinita = true;
                     System.out.println("Hai deciso di abbandonare la partita!\n");
                     System.out.println("Ci rivediamo presto!");
                 } else {
                     while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita){
                         System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
                         parolaTentata= sc.nextLine().toUpperCase();
-                        if(parolaTentata.equals("/ABBANDONA")){
-                            partitaFinita = Wordle.richiediConferma(sc);
+                        if(parolaTentata.equals("/ABBANDONA") && Wordle.richiediConferma(sc)){
+                            partitaFinita = true;
                             System.out.println("Hai deciso di abbandonare la partita!\n");
                             System.out.println("Ci rivediamo presto!");
                         }
@@ -49,7 +49,7 @@ public class Giocatore {
             if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
                 System.out.println("Mi dispiace, hai esaurito i tentativi!");
                 System.out.println("Riprova la prossima volta");
-                System.out.println("La parola da indovinare era: " + p.getParola());
+                System.out.println("\nLa parola da indovinare era: " + p.getParola());
             }
         }else{
             //gestisci eccezione
