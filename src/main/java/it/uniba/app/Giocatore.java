@@ -76,11 +76,11 @@ public class Giocatore {
         System.out.print("|");
         for(int i = 0; i < parolaSegreta.length(); i++){
             if(coloriLettereTentate[i] == 0){
-                System.out.print("  " + parolaTentata.charAt(i) + " X|");
+                System.out.print("  " + ConsoleColors.RED + parolaTentata.charAt(i) + ConsoleColors.RESET + "  |");
             } else if(coloriLettereTentate[i] == 1){
-                System.out.print("  " + parolaTentata.charAt(i) + " G|");
+                System.out.print("  " + ConsoleColors.GREEN + parolaTentata.charAt(i) + ConsoleColors.RESET +"  |");
             } else if(coloriLettereTentate[i] == 2){
-                System.out.print("  " + parolaTentata.charAt(i) + " S|");
+                System.out.print("  " + ConsoleColors.YELLOW + parolaTentata.charAt(i) + ConsoleColors.RESET + "  |");
             }
         }
     }
