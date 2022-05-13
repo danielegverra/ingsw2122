@@ -16,7 +16,7 @@ public class Giocatore {
                 System.out.print("Inserisci il tuo tentativo:\n>");
                 String parolaTentata = sc.nextLine().toUpperCase();
                 if(parolaTentata.equals("/ABBANDONA")){
-                    partitaFinita = true;
+                    partitaFinita = Wordle.richiediConferma(sc);
                     System.out.println("Hai deciso di abbandonare la partita!\n");
                     System.out.println("Ci rivediamo presto!");
                 } else {
@@ -24,7 +24,7 @@ public class Giocatore {
                         System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
                         parolaTentata= sc.nextLine().toUpperCase();
                         if(parolaTentata.equals("/ABBANDONA")){
-                            partitaFinita = true;
+                            partitaFinita = Wordle.richiediConferma(sc);
                             System.out.println("Hai deciso di abbandonare la partita!\n");
                             System.out.println("Ci rivediamo presto!");
                         }
