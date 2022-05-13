@@ -36,14 +36,21 @@ public class Giocatore {
                     
 
                         if(parolaTentata.compareTo(p.getParola()) == 0){
-                            /**uscita dalla partita */
+                            partitaFinita = true;
+                            p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
+                            System.out.println("Complimenti! Hai indovinato la parola");
+                            System.out.println("La parola da indovinare era: " + p.getParola());
                         }
                     }
                 }
 
             }
             sc.close();
-            /**stampa partita persa se i tentativi sono di più */
+            if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
+                System.out.println("Mi dispiace, hai esaurito i tentativi!");
+                System.out.println("Riprova la prossima volta");
+                System.out.println("La parola da indovinare era: " + p.getParola());
+            }
         }else{
             //gestisci eccezione
         }
