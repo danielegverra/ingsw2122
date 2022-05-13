@@ -178,7 +178,24 @@ public class Wordle {
         System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
     }
 
+    static boolean richiediConferma(Scanner sc){
+        System.out.println("Sei sicuro della tua scelta?");
+        System.out.println("\nDigita S se vuoi confermare la tua decisione");
+        System.out.println("Digita N se vuoi tornare a giocare");
+        String r = sc.nextLine().toUpperCase();
 
+        while(!r.equals("S") && !r.equals("N")){
+            System.out.println("Non hai inserito una parola valida!");
+            System.out.println("\nInserisci S o N:");
+            r = sc.nextLine().toUpperCase();
+        }
+
+        if(r.equals("S")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
     public static void main(String[] args) {
