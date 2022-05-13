@@ -6,6 +6,7 @@ public class Giocatore {
     public static void iniziaPartita(){
         if(Wordle.getParolaSegreta() != null){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
+            Boolean partitaFinita = false;
             System.out.println("Una nuova partita sta iniziando!");
             Wordle.visualizzaRegole();
             Wordle.visualizzaComandi();
