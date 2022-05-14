@@ -17,19 +17,19 @@ public class Paroliere {
         if(Wordle.getRuoloUtente().equals("PAROLIERE")){
             Wordle.setParolaSegreta(s);
         }else{
-            //gestisci eccezione 'ruolo'
+            System.out.println("Questo comando puo' essere effettuato solo dal paroliere.");
         }
     }
 
     public static void  visualizzaParola(){
 
         if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("PAROLIERE")){
-            System.out.println("La parola segreta è " + Wordle.getParolaSegreta());
+            System.out.println("La parola segreta e' " + Wordle.getParolaSegreta());
         }else if(!Wordle.getRuoloUtente().equals("PAROLIERE")){
             System.out.println("Non puoi visualizzare la parola segreta perche' non sei il paroliere!");
         }
         else{
-            System.out.println("Non è presente una parola segreta");
+            System.out.println("Non e' presente una parola segreta");
         }
     }
 }
