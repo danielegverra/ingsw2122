@@ -16,6 +16,9 @@ public class Wordle {
     private static int dimensioneParola = 5;
     private static String ruoloUtente;
     private static int maxTentativi;
+    private static boolean inCorso = true;
+
+    
 
     /**
      * METODI DI ACCESSO
@@ -64,6 +67,14 @@ public class Wordle {
 
     public static void setMaxTentativi(int tent) {
         maxTentativi = tent;
+    }
+
+    public static boolean isInCorso() {
+        return inCorso;
+    }
+
+    public static void setInCorso(boolean inCorso) {
+        Wordle.inCorso = inCorso;
     }
 
     /**
@@ -150,6 +161,12 @@ public class Wordle {
             }else{
                 //gestisci eccezione
             }
+        }else if(s[0].equals("/ESCI")){
+            if(s[1] == null){
+                chiudiGioco();
+            }else{
+                //gestisci eccezione
+            }
         }
     }
 
@@ -196,6 +213,18 @@ public class Wordle {
             return false;
         }
     }
+
+    private static void chiudiGioco(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Stai chiedendo di uscire dal gioco.");
+        if(richiediConferma(sc)){
+            setInCorso(false);
+            System.out.println("Sei uscito dal gioco");
+        }
+            
+    }
+
+
 
 
     public static void main(String[] args) {
