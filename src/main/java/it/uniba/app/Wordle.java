@@ -14,8 +14,8 @@ public class Wordle {
 
     private static String parolaSegreta;
     private static int dimensioneParola = 5;
-    private static String ruoloUtente;
-    private static int maxTentativi;
+    private static String ruoloUtente = "PAROLIERE";
+    private static int maxTentativi = 6;
     private static boolean inCorso = true;
 
     
@@ -166,6 +166,17 @@ public class Wordle {
                 chiudiGioco();
             }else{
                 //gestisci eccezione
+            }
+        }else if(s[0].equals("/RUOLO")){
+            
+            if(s[1] == null){
+                System.out.println("RUOLO CORRENTE: " + getRuoloUtente());
+            }else if(s[1].equals("PAROLIERE") || s[1].equals("GIOCATORE")){
+                setRuoloUtente(s[1]);
+                System.out.println("Hai scelto il ruolo: " + getRuoloUtente());
+            }else{
+                System.out.println("Mi spiace, non hai inserito un ruolo valido!\n");
+                System.out.println("Riprova digitando il comando /ruolo seguito da un ruolo valido");
             }
         }
     }

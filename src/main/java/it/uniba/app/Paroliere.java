@@ -25,12 +25,12 @@ public class Paroliere {
 
     public static void  visualizzaParola(){
 
-        if(Wordle.getParolaSegreta() != null)
-        {
-        System.out.println("La parola segreta è " + Wordle.getParolaSegreta());
+        if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("PAROLIERE")){
+            System.out.println("La parola segreta è " + Wordle.getParolaSegreta());
+        }else if(!Wordle.getRuoloUtente().equals("PAROLIERE")){
+            System.out.println("Non puoi visualizzare la parola segreta perche' non sei il paroliere!");
         }
-        else
-        {
+        else{
             System.out.println("Non è presente una parola segreta");
         }
     }
