@@ -2,11 +2,9 @@ package it.uniba.app;
 
 /**
  * Questa classe è di tipo ' '.
- * Si occupa di gestire tutte le operazioni che il paroliere può
- * compiere.
+ * Si occupa di gestire le azioni che può svolgere il paroliere.
  */
 public class Paroliere {
-
     /**
      * METODI
      */

@@ -2,6 +2,10 @@ package it.uniba.app;
 
 import java.util.Scanner;
 
+/**
+ * Questa classe è di tipo ' '.
+ * Si occupa di gestire le azioni che può svolgere il giocatore.
+ */
 public class Giocatore {
     public static void iniziaPartita(Scanner sc){
         if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("GIOCATORE")){            
