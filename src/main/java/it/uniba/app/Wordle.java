@@ -14,8 +14,8 @@ public class Wordle {
 
     private static String parolaSegreta;
     private static int dimensioneParola = 5;
-    private static String ruoloUtente;
-    private static int maxTentativi;
+    private static String ruoloUtente = "PAROLIERE";
+    private static int maxTentativi = 6;
     private static boolean inCorso = true;
 
     
