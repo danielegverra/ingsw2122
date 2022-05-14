@@ -3,7 +3,7 @@ package it.uniba.app;
 import java.util.Scanner;
 
 public class Giocatore {
-    public static void iniziaPartita(){
+    public static void iniziaPartita(Scanner sc){
         if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("GIOCATORE")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
@@ -11,7 +11,6 @@ public class Giocatore {
             Wordle.visualizzaRegole();
             Wordle.visualizzaComandi();
             stampaGriglia(p);
-            Scanner sc = new Scanner(System.in);
             while(p.getTentativiEffettuati() < p.getMaxTentativi() && !partitaFinita){
                 System.out.print("Inserisci il tuo tentativo:\n>");
                 String parolaTentata = sc.nextLine().toUpperCase();
@@ -34,7 +33,6 @@ public class Giocatore {
                         p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
                         stampaGriglia(p);
                     
-
                         if(parolaTentata.compareTo(p.getParola()) == 0){
                             partitaFinita = true;
                             p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
@@ -45,7 +43,6 @@ public class Giocatore {
                 }
 
             }
-            sc.close();
             if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
                 System.out.println("Mi dispiace, hai esaurito i tentativi!");
                 System.out.println("Riprova la prossima volta");

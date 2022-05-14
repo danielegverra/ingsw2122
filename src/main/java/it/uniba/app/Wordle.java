@@ -99,13 +99,11 @@ public class Wordle {
      * da tastiera, ne controlla la sintassi (scanner) e richiama
      * il metodo adeguato (parser).
      */
-    public static void inputComando(){
+    public static void inputComando(Scanner sc){
         System.out.print("\nInserire un comando:\n> ");
-        Scanner sc = new Scanner(System.in);
         String c = sc.nextLine().toUpperCase();
         String s[] = scannerWordle(c);
-        parserWordle(s);
-        sc.close();
+        parserWordle(sc, s);
     }
     
     /**
@@ -135,7 +133,7 @@ public class Wordle {
      * Questo metodo associa ad ogni comando il rispettivo metodo
      * da richiamare.
      */
-    private static void parserWordle(String s[]){
+    private static void parserWordle(Scanner sc, String s[]){
         if(s[0].equals("/NUOVA")){
             if(s[1] != null){
                 Paroliere.impostaParolaSegreta(s[1]);
@@ -144,7 +142,7 @@ public class Wordle {
             }
         }else if(s[0].equals("/GIOCA")){
             if(s[1] == null){
-                Giocatore.iniziaPartita();
+                Giocatore.iniziaPartita(sc);
             }else{
                 //gestisci eccezione
             }  
@@ -155,7 +153,7 @@ public class Wordle {
             }else{
                 //gestisci eccezione
             }
-        }else if(s[1].equals("/MOSTRA")){
+        }else if(s[0].equals("/MOSTRA")){
             if(s[1] == null){
                 Paroliere.visualizzaParola();
             }else{
@@ -163,12 +161,11 @@ public class Wordle {
             }
         }else if(s[0].equals("/ESCI")){
             if(s[1] == null){
-                chiudiGioco();
+                chiudiGioco(sc);
             }else{
                 //gestisci eccezione
             }
         }else if(s[0].equals("/RUOLO")){
-            
             if(s[1] == null){
                 System.out.println("RUOLO CORRENTE: " + getRuoloUtente());
             }else if(s[1].equals("PAROLIERE") || s[1].equals("GIOCATORE")){
@@ -225,21 +222,11 @@ public class Wordle {
         }
     }
 
-    private static void chiudiGioco(){
-        Scanner sc = new Scanner(System.in);
+    private static void chiudiGioco(Scanner sc){
         System.out.println("Stai chiedendo di uscire dal gioco.");
         if(richiediConferma(sc)){
             setInCorso(false);
             System.out.println("Sei uscito dal gioco");
         }
-            
-    }
-
-
-
-
-    public static void main(String[] args) {
-        inputComando();
-        System.out.println(getParolaSegreta());
     }
 }
