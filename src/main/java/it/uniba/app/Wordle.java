@@ -1,7 +1,7 @@
 package it.uniba.app;
 
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'Entity'.
  * Si occupa di gestire il nucleo del gioco.
  */
 public class Wordle {
@@ -78,6 +78,12 @@ public class Wordle {
      * METODI
     */
 
+    /**
+     * Questo metodo permette di visualizzare a video l'elenco completo dei
+     * comandi che l'utente può richiamare.
+     * nb. alcuni di essi possono essere effettuati solo in veste di un 
+     * ruolo specifico.
+     */
     static void visualizzaComandi(){
         System.out.println("\nAll'interno del gioco e' possibile eseguire i seguenti comandi:");
         System.out.println(" 1. /help: consente di visualizzare i comandi disponibili e le regole del gioco");
@@ -94,6 +100,9 @@ public class Wordle {
         System.out.println(" 2. /abbandona: consente di abbandonare la partita a seguito di una conferma positiva dell'utente\n");
     }
 
+    /**
+     * Questo metodo permette di visualizzare a video il regolamento del gioco.
+     */
     static void visualizzaRegole(){
         System.out.println("Di seguito vengono mostrate le regole e il funzionamento del gioco:\n");
         System.out.println("Lo scopo del gioco e' indovinare una parola di cinque lettere utilizzando un massimo di sei tentativi.");
@@ -103,6 +112,9 @@ public class Wordle {
         System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
     }
 
+    /**
+     * Questo metodo permette di chiudere l'intera sessione di gioco.
+     */
     public static void chiudiGioco(){
         setInCorso(false);
         System.out.println("\nSei uscito dal gioco.");

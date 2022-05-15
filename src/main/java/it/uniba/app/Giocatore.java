@@ -3,10 +3,19 @@ package it.uniba.app;
 import java.util.Scanner;
 
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'Control'.
  * Si occupa di gestire le azioni che può svolgere il giocatore.
  */
 public class Giocatore {
+
+    /**
+     * METODI
+     */
+
+    /**
+     * Questo metodo permette di partecipare ad una partita di Wordle,
+     * al suo interno vengono richiesti i tentativi all'utente.
+     */
     public static void iniziaPartita(Scanner sc){
         if(Wordle.getParolaSegreta() != "" && Wordle.getRuoloUtente().equals("GIOCATORE")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
@@ -122,6 +131,11 @@ public class Giocatore {
         }
     } 
 
+    /**
+     * Questo metodo, sulla base del tentativo effettuato dall'utente, riesce
+     * a indicare ad esso dei suggerimenti visivi, tramite i colori, per poter 
+     * indovinare la parola segreta.
+     */
     private static Integer[] calcolaColori(String parolaTentata, String parolaSegreta){
         Integer[] coloriLettereSegrete = new Integer[parolaSegreta.length()];
         Integer[] coloriLettereTentate = new Integer[parolaSegreta.length()];

@@ -1,6 +1,6 @@
 package it.uniba.app;
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'noECB'.
  * Si occupa di gestire i colori della matrice di tentativi.
  */
 public class ConsoleColors {
