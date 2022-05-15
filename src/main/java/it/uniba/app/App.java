@@ -29,7 +29,7 @@ public final class App {
         }
         Scanner sc = new Scanner(System.in);
         while(Wordle.isInCorso()){
-            Wordle.inputComando(sc);
+            Manager.inputComando(sc);
         }
         sc.close();
     }

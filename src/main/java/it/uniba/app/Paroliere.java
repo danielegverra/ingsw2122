@@ -1,7 +1,7 @@
 package it.uniba.app;
 
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'Control'.
  * Si occupa di gestire le azioni che può svolgere il paroliere.
  */
 public class Paroliere {
@@ -21,6 +21,10 @@ public class Paroliere {
         }
     }
 
+    /**
+     * Questo metodo permette al paroliere di visualizzare la parola
+     * segreta corrente.
+     */
     public static void  visualizzaParola(){
 
         if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("PAROLIERE")){

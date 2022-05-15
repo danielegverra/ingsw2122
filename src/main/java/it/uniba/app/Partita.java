@@ -2,13 +2,15 @@ package it.uniba.app;
 
 
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'Entity'.
  * Si occupa di gestire le informazioni della partita.
  */
 public class Partita {
-        /** 
+    
+    /** 
     *   ATTRIBUTI
     */
+
     private int tentativiEffettuati;
     private int maxTentativi;
     private String parolaSegreta;
@@ -17,6 +19,7 @@ public class Partita {
     /** 
     * METODI ACCESSO
     */
+
     public int getTentativiEffettuati() {
         return tentativiEffettuati;
     }

@@ -3,12 +3,21 @@ package it.uniba.app;
 import java.util.Scanner;
 
 /**
- * Questa classe è di tipo ' '.
+ * Questa classe è di tipo 'Control'.
  * Si occupa di gestire le azioni che può svolgere il giocatore.
  */
 public class Giocatore {
+
+    /**
+     * METODI
+     */
+
+    /**
+     * Questo metodo permette di partecipare ad una partita di Wordle,
+     * al suo interno vengono richiesti i tentativi all'utente.
+     */
     public static void iniziaPartita(Scanner sc){
-        if(Wordle.getParolaSegreta() != "" && Wordle.getRuoloUtente().equals("GIOCATORE")){            
+        if(!Wordle.getParolaSegreta().equals("") && Wordle.getRuoloUtente().equals("GIOCATORE")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
             System.out.println("\nUna nuova partita sta iniziando!");
@@ -21,19 +30,19 @@ public class Giocatore {
                     System.out.print("\nInserisci il tuo tentativo:\n> ");
                     parolaTentata= sc.nextLine().toUpperCase();
                     if(parolaTentata.equals("/ESCI")){
-                        if(Wordle.richiediConferma(sc)){
+                        if(Manager.richiediConferma(sc)){
                             Wordle.chiudiGioco();
                             return;
                         }
                     }else if(parolaTentata.equals("/ABBANDONA")){
-                        if(Wordle.richiediConferma(sc)){
+                        if(Manager.richiediConferma(sc)){
                             partitaFinita = true;
                             System.out.println("Hai deciso di abbandonare la partita!\n");
                             System.out.println("Ci rivediamo presto!");
                         }
-                    }else if(!Wordle.parolaValida(parolaTentata)){
+                    }else if(!Manager.parolaValida(parolaTentata)){
                         System.out.println("Tentativo non valido.");
-                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
+                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
                     }else if(parolaTentata.length() < p.getParola().length()){
                         System.out.println("Tentativo incompleto.");
                         System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
@@ -41,7 +50,7 @@ public class Giocatore {
                         System.out.println("Tentativo eccessivo.");
                         System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
                     }
-                } while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita);
+                } while((parolaTentata.length() != p.getParola().length() || !Manager.parolaValida(parolaTentata)) && !partitaFinita);
                 if(!partitaFinita){
                     p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
                     p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
@@ -60,7 +69,7 @@ public class Giocatore {
                 System.out.println("Hai raggiunto il numero massimo di tentativi!");
                 System.out.println("\nLa parola segreta e': " + p.getParola());
             }
-        }else if(Wordle.getParolaSegreta() == ""){
+        }else if(Wordle.getParolaSegreta().equals("")){
             System.out.println("Parola segreta mancante.");
         }else{
             System.out.println("Solo il giocatore puo' iniziare una nuova partita.");
@@ -122,6 +131,11 @@ public class Giocatore {
         }
     } 
 
+    /**
+     * Questo metodo, sulla base del tentativo effettuato dall'utente, riesce
+     * a indicare ad esso dei suggerimenti visivi, tramite i colori, per poter 
+     * indovinare la parola segreta.
+     */
     private static Integer[] calcolaColori(String parolaTentata, String parolaSegreta){
         Integer[] coloriLettereSegrete = new Integer[parolaSegreta.length()];
         Integer[] coloriLettereTentate = new Integer[parolaSegreta.length()];
