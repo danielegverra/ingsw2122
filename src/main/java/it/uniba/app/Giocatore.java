@@ -21,17 +21,17 @@ public class Giocatore {
                     System.out.print("\nInserisci il tuo tentativo:\n> ");
                     parolaTentata= sc.nextLine().toUpperCase();
                     if(parolaTentata.equals("/ESCI")){
-                        if(Wordle.richiediConferma(sc)){
+                        if(Manager.richiediConferma(sc)){
                             Wordle.chiudiGioco();
                             return;
                         }
                     }else if(parolaTentata.equals("/ABBANDONA")){
-                        if(Wordle.richiediConferma(sc)){
+                        if(Manager.richiediConferma(sc)){
                             partitaFinita = true;
                             System.out.println("Hai deciso di abbandonare la partita!\n");
                             System.out.println("Ci rivediamo presto!");
                         }
-                    }else if(!Wordle.parolaValida(parolaTentata)){
+                    }else if(!Manager.parolaValida(parolaTentata)){
                         System.out.println("Tentativo non valido.");
                         System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
                     }else if(parolaTentata.length() < p.getParola().length()){
@@ -41,7 +41,7 @@ public class Giocatore {
                         System.out.println("Tentativo eccessivo.");
                         System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
                     }
-                } while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita);
+                } while((parolaTentata.length() != p.getParola().length() || !Manager.parolaValida(parolaTentata)) && !partitaFinita);
                 if(!partitaFinita){
                     p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
                     p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
