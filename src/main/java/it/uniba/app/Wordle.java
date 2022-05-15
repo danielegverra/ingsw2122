@@ -12,11 +12,12 @@ public class Wordle {
      * ATTRIBUTI
     */
 
-    private static String parolaSegreta;
+    private static String parolaSegreta = "";
     private static int dimensioneParola = 5;
     private static String ruoloUtente = "PAROLIERE";
     private static int maxTentativi = 6;
     private static boolean inCorso = true;
+    
 
     
 
@@ -30,16 +31,16 @@ public class Wordle {
     
     public static void setParolaSegreta(String p){
         if(p.length() > dimensioneParola){
-            //gestisci eccezione '>'
+            System.out.println("Parola segreta troppo lunga, deve avere "+ getDimensioneParola() + " caratteri." );
         }else{
             if(p.length() < dimensioneParola){
-                //gestisci eccezione '<'
+                System.out.println("Parola segreta troppo corta, deve avere "+ getDimensioneParola() + " caratteri." );
             }else{
                 if(!parolaValida(p)){
-                    //gestisci eccezione 'non valida'
+                     System.out.println("Parola segreta non valida.");
                 }else{
                     parolaSegreta = new String(p);
-                    System.out.println("OK");
+                    System.out.println("OK.");
                 }
             }
         }
@@ -100,9 +101,14 @@ public class Wordle {
      * il metodo adeguato (parser).
      */
     public static void inputComando(Scanner sc){
-        System.out.print("\nInserire un comando:\n> ");
-        String c = sc.nextLine().toUpperCase();
-        String s[] = scannerWordle(c);
+        String c;
+        String[] s;
+        do {
+            System.out.print("\nInserire un comando:\n[" + getRuoloUtente() + "] > ");
+            c = sc.nextLine().toUpperCase();
+            s = scannerWordle(c);
+        } while(s.length < 1);
+        
         parserWordle(sc, s);
     }
     
@@ -111,18 +117,20 @@ public class Wordle {
      * comando dato in input.
      */
     private static String[] scannerWordle(String c){
-        String s[] = c.split(" ");
-        if(s[0].charAt(0) != '/'){
-            //gestisci eccezione
-        }else{
-            if(s.length > 2){
-                //gestisci eccezione
+        String s[] = c.trim().split("\\s+");
+        if(s.length >= 1){
+            if(s[0].charAt(0) != '/'){
+                System.out.println("Tutti i comandi devono iniziare per '/'");
             }else{
-                if(s.length == 1){
-                    String ss[] = new String[2];
-                    ss[0] = s[0];
-                    ss[1] = null;
-                    return ss;
+                if(s.length > 2){
+                    System.out.println("Tutti i comandi devono avere massimo due parole.");
+                }else{
+                    if(s.length == 1){
+                        String ss[] = new String[2];
+                        ss[0] = s[0];
+                        ss[1] = null;
+                        return ss;
+                    }
                 }
             }
         }
@@ -138,32 +146,32 @@ public class Wordle {
             if(s[1] != null){
                 Paroliere.impostaParolaSegreta(s[1]);
             }else{
-                //gestisci eccezione
+                System.out.println("Parola segreta assente.");
             }
         }else if(s[0].equals("/GIOCA")){
             if(s[1] == null){
                 Giocatore.iniziaPartita(sc);
             }else{
-                //gestisci eccezione
+                System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }  
         }else if(s[0].equals("/HELP")){
             if(s[1] == null){
                 visualizzaComandi();
                 visualizzaRegole();
             }else{
-                //gestisci eccezione
+                System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }
         }else if(s[0].equals("/MOSTRA")){
             if(s[1] == null){
                 Paroliere.visualizzaParola();
             }else{
-                //gestisci eccezione
+                System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }
         }else if(s[0].equals("/ESCI")){
-            if(s[1] == null){
-                chiudiGioco(sc);
+            if(s[1] == null && richiediConferma(sc)){
+                chiudiGioco();
             }else{
-                //gestisci eccezione
+                System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }
         }else if(s[0].equals("/RUOLO")){
             if(s[1] == null){
@@ -200,13 +208,13 @@ public class Wordle {
         System.out.println("La parola segreta viene decisa dal paroliere, che per ogni tentativo restituisce tre tipi di indizi utili a restringere il cerchio sulla soluzione");
         System.out.println("Ogni lettera indovinata nella posizione e' segnata con una V,");
         System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata e' segnata con S,");
-        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
+        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
     }
 
     static boolean richiediConferma(Scanner sc){
-        System.out.println("Sei sicuro della tua scelta?");
-        System.out.println("\nDigita S se vuoi confermare la tua decisione");
-        System.out.println("Digita N se vuoi tornare a giocare");
+        System.out.println("\nSei sicuro della tua scelta?");
+        System.out.println("\nDigita S se vuoi confermare la tua decisione.");
+        System.out.println("Digita N se vuoi tornare a giocare.\n");
         String r = sc.nextLine().toUpperCase();
 
         while(!r.equals("S") && !r.equals("N")){
@@ -222,11 +230,8 @@ public class Wordle {
         }
     }
 
-    private static void chiudiGioco(Scanner sc){
-        System.out.println("Stai chiedendo di uscire dal gioco.");
-        if(richiediConferma(sc)){
-            setInCorso(false);
-            System.out.println("Sei uscito dal gioco");
-        }
+    public static void chiudiGioco(){
+        setInCorso(false);
+        System.out.println("\nSei uscito dal gioco.");
     }
 }

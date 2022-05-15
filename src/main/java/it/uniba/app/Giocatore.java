@@ -2,54 +2,68 @@ package it.uniba.app;
 
 import java.util.Scanner;
 
+/**
+ * Questa classe è di tipo ' '.
+ * Si occupa di gestire le azioni che può svolgere il giocatore.
+ */
 public class Giocatore {
     public static void iniziaPartita(Scanner sc){
-        if(Wordle.getParolaSegreta() != null && Wordle.getRuoloUtente().equals("GIOCATORE")){            
+        if(Wordle.getParolaSegreta() != "" && Wordle.getRuoloUtente().equals("GIOCATORE")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
-            System.out.println("Una nuova partita sta iniziando!");
+            System.out.println("\nUna nuova partita sta iniziando!");
             Wordle.visualizzaRegole();
             Wordle.visualizzaComandi();
             stampaGriglia(p);
             while(p.getTentativiEffettuati() < p.getMaxTentativi() && !partitaFinita){
-                System.out.print("Inserisci il tuo tentativo:\n>");
-                String parolaTentata = sc.nextLine().toUpperCase();
-                if(parolaTentata.equals("/ABBANDONA") && Wordle.richiediConferma(sc)){
-                    partitaFinita = true;
-                    System.out.println("Hai deciso di abbandonare la partita!\n");
-                    System.out.println("Ci rivediamo presto!");
-                } else {
-                    while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita){
-                        System.out.print("La parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
-                        parolaTentata= sc.nextLine().toUpperCase();
-                        if(parolaTentata.equals("/ABBANDONA") && Wordle.richiediConferma(sc)){
+                String parolaTentata;
+                do{
+                    System.out.print("\nInserisci il tuo tentativo:\n> ");
+                    parolaTentata= sc.nextLine().toUpperCase();
+                    if(parolaTentata.equals("/ESCI")){
+                        if(Wordle.richiediConferma(sc)){
+                            Wordle.chiudiGioco();
+                            return;
+                        }
+                    }else if(parolaTentata.equals("/ABBANDONA")){
+                        if(Wordle.richiediConferma(sc)){
                             partitaFinita = true;
                             System.out.println("Hai deciso di abbandonare la partita!\n");
                             System.out.println("Ci rivediamo presto!");
                         }
+                    }else if(!Wordle.parolaValida(parolaTentata)){
+                        System.out.println("Tentativo non valido.");
+                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
+                    }else if(parolaTentata.length() < p.getParola().length()){
+                        System.out.println("Tentativo incompleto.");
+                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
+                    }else if(parolaTentata.length() > p.getParola().length()){
+                        System.out.println("Tentativo eccessivo.");
+                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
                     }
-                    if(!partitaFinita){
-                        p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
-                        p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
-                        stampaGriglia(p);
-                    
-                        if(parolaTentata.compareTo(p.getParola()) == 0){
-                            partitaFinita = true;
-                            p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
-                            System.out.println("Complimenti! Hai indovinato la parola");
-                            System.out.println("La parola da indovinare era: " + p.getParola());
-                        }
+                } while((parolaTentata.length() != p.getParola().length() || !Wordle.parolaValida(parolaTentata)) && !partitaFinita);
+                if(!partitaFinita){
+                    p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
+                    p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
+                    stampaGriglia(p);
+                
+                    if(parolaTentata.compareTo(p.getParola()) == 0){
+                        partitaFinita = true;
+                        System.out.println("Parola segreta indovinata.");
+                        System.out.println("Numero tentativi: " + p.getTentativiEffettuati());
+                        p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
                     }
                 }
+            }
 
-            }
             if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
-                System.out.println("Mi dispiace, hai esaurito i tentativi!");
-                System.out.println("Riprova la prossima volta");
-                System.out.println("\nLa parola da indovinare era: " + p.getParola());
+                System.out.println("Hai raggiunto il numero massimo di tentativi!");
+                System.out.println("\nLa parola segreta e': " + p.getParola());
             }
+        }else if(Wordle.getParolaSegreta() == ""){
+            System.out.println("Parola segreta mancante.");
         }else{
-            //gestisci eccezione
+            System.out.println("Solo il giocatore puo' iniziare una nuova partita.");
         }
     }
 
@@ -88,10 +102,7 @@ public class Giocatore {
          * per ogni posizione, 0=grigio 1=verde 2=giallo
         */
 
-        Integer[] coloriLettereTentate = calcolaColori(parolaTentata, parolaSegreta);
-
-        /**Controllo sulla correttezza della singola lettera */
-        
+        Integer[] coloriLettereTentate = calcolaColori(parolaTentata, parolaSegreta);       
         System.out.print("|");
         for(int i = 0; i < parolaSegreta.length(); i++){
             if(coloriLettereTentate[i] == 0){

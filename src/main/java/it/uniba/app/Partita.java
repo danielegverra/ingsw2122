@@ -1,6 +1,12 @@
 package it.uniba.app;
+
+
+/**
+ * Questa classe è di tipo ' '.
+ * Si occupa di gestire le informazioni della partita.
+ */
 public class Partita {
-    /** 
+        /** 
     *   ATTRIBUTI
     */
     private int tentativiEffettuati;
