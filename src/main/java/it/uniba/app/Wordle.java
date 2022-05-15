@@ -101,9 +101,14 @@ public class Wordle {
      * il metodo adeguato (parser).
      */
     public static void inputComando(Scanner sc){
-        System.out.print("\nInserire un comando:\n[" + getRuoloUtente() + "] > ");
-        String c = sc.nextLine().toUpperCase();
-        String s[] = scannerWordle(c);
+        String c;
+        String[] s;
+        do {
+            System.out.print("\nInserire un comando:\n[" + getRuoloUtente() + "] > ");
+            c = sc.nextLine().toUpperCase();
+            s = scannerWordle(c);
+        } while(s.length < 1);
+        
         parserWordle(sc, s);
     }
     
@@ -112,18 +117,20 @@ public class Wordle {
      * comando dato in input.
      */
     private static String[] scannerWordle(String c){
-        String s[] = c.split(" ");
-        if(s[0].charAt(0) != '/'){
-            System.out.println("Tutti i comandi devono iniziare per '/'");
-        }else{
-            if(s.length > 2){
-                System.out.println("Tutti i comandi devono avere massimo due parole.");
+        String s[] = c.trim().split("\\s+");
+        if(s.length >= 1){
+            if(s[0].charAt(0) != '/'){
+                System.out.println("Tutti i comandi devono iniziare per '/'");
             }else{
-                if(s.length == 1){
-                    String ss[] = new String[2];
-                    ss[0] = s[0];
-                    ss[1] = null;
-                    return ss;
+                if(s.length > 2){
+                    System.out.println("Tutti i comandi devono avere massimo due parole.");
+                }else{
+                    if(s.length == 1){
+                        String ss[] = new String[2];
+                        ss[0] = s[0];
+                        ss[1] = null;
+                        return ss;
+                    }
                 }
             }
         }
@@ -201,13 +208,13 @@ public class Wordle {
         System.out.println("La parola segreta viene decisa dal paroliere, che per ogni tentativo restituisce tre tipi di indizi utili a restringere il cerchio sulla soluzione");
         System.out.println("Ogni lettera indovinata nella posizione e' segnata con una V,");
         System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata e' segnata con S,");
-        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
+        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
     }
 
     static boolean richiediConferma(Scanner sc){
-        System.out.println("Sei sicuro della tua scelta?");
-        System.out.println("\nDigita S se vuoi confermare la tua decisione");
-        System.out.println("Digita N se vuoi tornare a giocare");
+        System.out.println("\nSei sicuro della tua scelta?");
+        System.out.println("\nDigita S se vuoi confermare la tua decisione.");
+        System.out.println("Digita N se vuoi tornare a giocare.\n");
         String r = sc.nextLine().toUpperCase();
 
         while(!r.equals("S") && !r.equals("N")){
@@ -225,6 +232,6 @@ public class Wordle {
 
     public static void chiudiGioco(){
         setInCorso(false);
-        System.out.println("Sei uscito dal gioco");
+        System.out.println("\nSei uscito dal gioco.");
     }
 }
