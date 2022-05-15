@@ -101,6 +101,8 @@ public class Manager {
                 System.out.println("Mi spiace, non hai inserito un ruolo valido!\n");
                 System.out.println("Riprova digitando il comando /ruolo seguito da un ruolo valido");
             }
+        }else{
+            System.out.println("Comando non riconosciuto.");
         }
     }
 

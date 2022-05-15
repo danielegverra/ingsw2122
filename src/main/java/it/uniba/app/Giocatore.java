@@ -17,7 +17,7 @@ public class Giocatore {
      * al suo interno vengono richiesti i tentativi all'utente.
      */
     public static void iniziaPartita(Scanner sc){
-        if(Wordle.getParolaSegreta() != "" && Wordle.getRuoloUtente().equals("GIOCATORE")){            
+        if(!Wordle.getParolaSegreta().equals("") && Wordle.getRuoloUtente().equals("GIOCATORE")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
             System.out.println("\nUna nuova partita sta iniziando!");
@@ -42,7 +42,7 @@ public class Giocatore {
                         }
                     }else if(!Manager.parolaValida(parolaTentata)){
                         System.out.println("Tentativo non valido.");
-                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n>");
+                        System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
                     }else if(parolaTentata.length() < p.getParola().length()){
                         System.out.println("Tentativo incompleto.");
                         System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
@@ -69,7 +69,7 @@ public class Giocatore {
                 System.out.println("Hai raggiunto il numero massimo di tentativi!");
                 System.out.println("\nLa parola segreta e': " + p.getParola());
             }
-        }else if(Wordle.getParolaSegreta() == ""){
+        }else if(Wordle.getParolaSegreta().equals("")){
             System.out.println("Parola segreta mancante.");
         }else{
             System.out.println("Solo il giocatore puo' iniziare una nuova partita.");
