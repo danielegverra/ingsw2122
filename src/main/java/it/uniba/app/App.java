@@ -23,6 +23,10 @@ public final class App {
      */
     public static void main(final String[] args) {
         //System.out.println(new App().getGreeting());
+        if(args.length != 0 && (args[0].equals("-h") || args[0].equals("--help"))){
+            Wordle.visualizzaRegole();
+            Wordle.visualizzaComandi();
+        }
         Scanner sc = new Scanner(System.in);
         while(Wordle.isInCorso()){
             Wordle.inputComando(sc);
