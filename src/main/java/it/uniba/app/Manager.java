@@ -21,13 +21,18 @@ public class Manager {
     public static void inputComando(Scanner sc){
         String c;
         String[] s;
-        do {
-            System.out.print("\nInserire un comando:\n[" + Wordle.getRuoloUtente() + "] > ");
-            c = sc.nextLine().toUpperCase();
-            s = scannerWordle(c);
-        } while(s.length < 1);
+        try {
+            do {
+                System.out.print("\nInserire un comando:\n[" + Wordle.getRuoloUtente() + "] > ");
+                c = sc.nextLine().toUpperCase();
+                s = scannerWordle(c);
+            } while(s.length < 1);
+            
+            parserWordle(sc, s);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("");
+        }
         
-        parserWordle(sc, s);
     }
     
     /**
