@@ -91,8 +91,10 @@ public class Manager {
                 System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }
         }else if(s[0].equals("/ESCI")){
-            if(s[1] == null && richiediConferma(sc)){
-                Wordle.chiudiGioco();
+            if(s[1] == null){
+                if(richiediConferma(sc)){
+                    Wordle.chiudiGioco();
+                }
             }else{
                 System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }
@@ -131,7 +133,7 @@ public class Manager {
     static boolean richiediConferma(Scanner sc){
         System.out.println("\nSei sicuro della tua scelta?");
         System.out.println("\nDigita S se vuoi confermare la tua decisione.");
-        System.out.println("Digita N se vuoi tornare a giocare.\n");
+        System.out.println("Digita N se vuoi tornare a giocare.");
         String r = sc.nextLine().toUpperCase();
 
         while(!r.equals("S") && !r.equals("N")){
