@@ -28,7 +28,7 @@ public class Giocatore {
                 String parolaTentata;
                 do{
                     System.out.print("\nInserisci il tuo tentativo:\n> ");
-                    parolaTentata= sc.nextLine().toUpperCase();
+                    parolaTentata= sc.nextLine().toUpperCase().trim();
                     if(parolaTentata.equals("/ESCI")){
                         if(Manager.richiediConferma(sc)){
                             Wordle.chiudiGioco();
