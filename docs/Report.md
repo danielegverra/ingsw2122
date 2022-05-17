@@ -63,7 +63,7 @@ Abbiamo individuato alcune user story di maggiore rilevanza di cui sono riportat
 
 ![Classi_imposta](../drawings/DiagrammaClassi_impostaParolaSegreta.png)
 
-![Sequenza_imposta](../drawings/DiagrammaSequenza_impostaParolaSegreta.png)
+![Sequenza_imposta](../drawings/DiagrammaSequenza_impostaParolaSegreta.PNG)
 
 <br/>
 
@@ -71,9 +71,15 @@ Abbiamo individuato alcune user story di maggiore rilevanza di cui sono riportat
 
 ![Classi_visualizza](../drawings/DiagrammaClassi_visualizzaParola.png)
 
-![Sequenza_visualizza](../drawings/DiagrammaSequenza_visualizzaParola.png)
+![Sequenza_visualizza](../drawings/DiagrammaSequenza_visualizzaParola.PNG)
 
 <br/>
 
+<h3>iniziaPartita / Effettuare Tentativo </h3>
 
+![Classi_inizia](../drawings/DiagrammaClassi_iniziaPartita-tentativo.png)
+
+![Sequenza_inizia](../drawings/DiagrammaSequenza_iniziaPartita-tentativo.PNG)
+
+<br/>
 
