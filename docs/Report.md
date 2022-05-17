@@ -19,7 +19,7 @@ Responsabile del progetto il Professore Filippo Lanubile.
 
 <h2 id="modd"> 2. Modello di dominio </h2>
 
-![Diagramma concettuale](./ModelloDiDominio.png)
+![ModelloDiDominio](../drawings/ModelloDominio.png) 
 
 <br/><br/><br/>
 
@@ -57,3 +57,4 @@ Analizzando le varie necessità e documentazioni abbiamo ritenuto necessario div
 Giocatore e Paroliere che si occupano di gestire i comandi permessi rispettivamente ai due tipi di user, Partita e Wordle che contengono e gestiscono le caratteristiche principali del gioco e infine la classe Manager che si occupa dell'acquisizione dei comandi dati in input dall'utente.<br/>
 Abbiamo individuato alcune user story di maggiore rilevanza di cui sono riportati diagrammi delle classi e diagrammi di sequenza:
 
+[Diagramma concettuale](./ModelloDiDominio.png)
