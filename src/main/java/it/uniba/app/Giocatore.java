@@ -80,9 +80,17 @@ public class Giocatore {
         /** 
          * Stampa del separatore superiore
         */
-        System.out.print(" ");
+        System.out.print(ConsoleColors.WHITE + " ");
         for (int j = 0; j < p.getParola().length(); j++){
-            System.out.print("~~~~~ ");
+            System.out.print(ConsoleColors.WHITE + "~~~~~ " + ConsoleColors.RESET);
+        }
+        System.out.print("\n");
+
+        System.out.println(ConsoleColors.WHITE + "|           WORDLE            |" + ConsoleColors.RESET);
+
+        System.out.print(ConsoleColors.WHITE + " ");
+        for (int j = 0; j < p.getParola().length(); j++){
+            System.out.print(ConsoleColors.WHITE + "~~~~~ " + ConsoleColors.RESET);
         }
         System.out.print("\n");
         /** 
@@ -97,9 +105,9 @@ public class Giocatore {
             /** 
              * Stampa del separatore inferiore per ogni riga
              */
-            System.out.print("\n ");
+            System.out.print("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < p.getParola().length(); j++){
-                System.out.print("~~~~~ ");
+                System.out.print(ConsoleColors.WHITE + "~~~~~ " + ConsoleColors.RESET);
             }
             System.out.print("\n");
         }
@@ -112,22 +120,22 @@ public class Giocatore {
         */
 
         Integer[] coloriLettereTentate = calcolaColori(parolaTentata, parolaSegreta);       
-        System.out.print("|");
+        System.out.print(ConsoleColors.WHITE + "|");
         for(int i = 0; i < parolaSegreta.length(); i++){
             if(coloriLettereTentate[i] == 0){
-                System.out.print("  " + ConsoleColors.RED + parolaTentata.charAt(i) + ConsoleColors.RESET + "  |");
+                System.out.print(ConsoleColors.GREY + "  " + parolaTentata.charAt(i)+ "  " + ConsoleColors.WHITE + "|" + ConsoleColors.RESET);
             } else if(coloriLettereTentate[i] == 1){
-                System.out.print("  " + ConsoleColors.GREEN + parolaTentata.charAt(i) + ConsoleColors.RESET +"  |");
+                System.out.print(ConsoleColors.GREEN + "  " + parolaTentata.charAt(i) + "  "+ ConsoleColors.WHITE + "|" + ConsoleColors.RESET);
             } else if(coloriLettereTentate[i] == 2){
-                System.out.print("  " + ConsoleColors.YELLOW + parolaTentata.charAt(i) + ConsoleColors.RESET + "  |");
+                System.out.print(ConsoleColors.YELLOW + "  " + parolaTentata.charAt(i) + "  " + ConsoleColors.WHITE + "|" + ConsoleColors.RESET);
             }
         }
     }
 
     private static void stampaRigaGrigliaVuota(int lunghezza){
-        System.out.print("|");
+        System.out.print(ConsoleColors.WHITE + "|");
         for(int i = 0; i < lunghezza; i++){
-            System.out.print("     |");
+            System.out.print(ConsoleColors.DARK_WHITE + "     " + ConsoleColors.WHITE + "|" + ConsoleColors.RESET);
         }
     } 
 
