@@ -17,7 +17,7 @@ public class Giocatore {
      * al suo interno vengono richiesti i tentativi all'utente.
      */
     public static void iniziaPartita(Scanner sc){
-        if(!Wordle.getParolaSegreta().equals("") && Wordle.getRuoloUtente().equals("GIOCATORE")){            
+        if(!Wordle.getParolaSegreta().equals("")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
             System.out.println("\nUna nuova partita sta iniziando!");
