@@ -12,8 +12,10 @@ public class ConsoleColors {
     /**
      * COLORS
      */
-    public static final String RED = "\033[1;91m";   // RED
-    public static final String GREEN = "\033[1;92m"; // GREEN
-    public static final String YELLOW = "\033[1;93m";// YELLOW
+    public static final String GREY = "\033[48;2;128;124;124m";                     // GREY
+    public static final String GREEN = "\033[48;2;108;169;104m";                    // GREEN
+    public static final String YELLOW = "\033[48;2;200;180;91m";                    // YELLOW  
+    public static final String WHITE = "\033[48;2;255;255;255m";                    // WHITE
+    public static final String DARK_WHITE = "\033[48;2;210;210;210m";               // DARK_WHITE
     
 }
