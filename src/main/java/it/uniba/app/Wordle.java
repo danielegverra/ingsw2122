@@ -12,7 +12,6 @@ public class Wordle {
 
     private static String parolaSegreta = "";
     private static int dimensioneParola = 5;
-    private static String ruoloUtente = "PAROLIERE";
     private static int maxTentativi = 6;
     private static boolean inCorso = true;
     
@@ -48,14 +47,6 @@ public class Wordle {
 
     public static void setDimensioneParola(int dim){
         dimensioneParola = dim;
-    }
-
-    public static String getRuoloUtente(){
-        return new String(ruoloUtente);
-    }
-
-    public static void setRuoloUtente(String s){
-        ruoloUtente = new String(s);
     }
 
     public static int getMaxTentativi() {
