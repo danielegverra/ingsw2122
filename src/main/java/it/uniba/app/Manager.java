@@ -23,7 +23,7 @@ public class Manager {
         String[] s;
         try {
             do {
-                System.out.print("\nInserire un comando:\n[" + Wordle.getRuoloUtente() + "] > ");
+                System.out.print("\nInserire un comando:\n> ");
                 c = sc.nextLine().toUpperCase();
                 s = scannerWordle(c);
             } while(s.length < 1);
@@ -97,16 +97,6 @@ public class Manager {
                 }
             }else{
                 System.out.println("Questo comando non ha bisogno di una seconda parola.");
-            }
-        }else if(s[0].equals("/RUOLO")){
-            if(s[1] == null){
-                System.out.println("RUOLO CORRENTE: " + Wordle.getRuoloUtente());
-            }else if(s[1].equals("PAROLIERE") || s[1].equals("GIOCATORE")){
-                Wordle.setRuoloUtente(s[1]);
-                System.out.println("Hai scelto il ruolo: " + Wordle.getRuoloUtente());
-            }else{
-                System.out.println("Mi spiace, non hai inserito un ruolo valido!\n");
-                System.out.println("Riprova digitando il comando /ruolo seguito da un ruolo valido");
             }
         }else{
             System.out.println("Comando non riconosciuto.");
