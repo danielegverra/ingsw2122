@@ -138,4 +138,39 @@ public class Manager {
             return false;
         }
     }
+
+     /**
+     * Questo metodo permette di eseguire un tentativo.
+     */
+    static String isTentativo(Scanner sc, Partita p, Boolean partitaFinita){
+        String parolaTentata;
+        do{
+            System.out.print("\nInserisci il tuo tentativo:\n> ");
+            parolaTentata= sc.nextLine().toUpperCase().trim();
+            if(parolaTentata.equals("/ESCI")){
+                if(Manager.richiediConferma(sc)){
+                    Wordle.chiudiGioco();
+                    return parolaTentata;
+                }
+            }else if(parolaTentata.equals("/ABBANDONA")){
+                if(Manager.richiediConferma(sc)){
+                    partitaFinita = true;
+                    System.out.println("Hai deciso di abbandonare la partita!\n");
+                    System.out.println("Ci rivediamo presto!");
+                    return parolaTentata;
+                }
+            }else if(!Manager.parolaValida(parolaTentata)){
+                System.out.println("Tentativo non valido.");
+                System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
+            }else if(parolaTentata.length() < p.getParola().length()){
+                System.out.println("Tentativo incompleto.");
+                System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
+            }else if(parolaTentata.length() > p.getParola().length()){
+                System.out.println("Tentativo eccessivo.");
+                System.out.print("\nLa parola da inserire deve avere lunghezza " + p.getParola().length() + " e deve\nessere composta da soli caratteri dell'alfabeto:\n");
+            }
+        } while((parolaTentata.length() != p.getParola().length() || !Manager.parolaValida(parolaTentata)) && !partitaFinita);
+
+        return parolaTentata;
+    }  
 }
