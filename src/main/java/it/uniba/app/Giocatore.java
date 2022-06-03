@@ -21,8 +21,8 @@ public class Giocatore {
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
             System.out.println("\nUna nuova partita sta iniziando!");
-            Wordle.visualizzaRegole();
-            Wordle.visualizzaComandi();
+            Monitor.visualizzaRegole();
+            Monitor.visualizzaComandi();
             Monitor.stampaGriglia(p);
             while(p.getTentativiEffettuati() < p.getMaxTentativi() && !partitaFinita){
                 String parolaTentata;

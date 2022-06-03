@@ -79,8 +79,8 @@ public class Manager {
             }  
         }else if(s[0].equals("/HELP")){
             if(s[1] == null){
-                Wordle.visualizzaComandi();
-                Wordle.visualizzaRegole();
+                Monitor.visualizzaComandi();
+                Monitor.visualizzaRegole();
             }else{
                 System.out.println("Questo comando non ha bisogno di una seconda parola.");
             }

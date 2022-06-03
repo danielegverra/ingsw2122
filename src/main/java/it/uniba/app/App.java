@@ -17,6 +17,7 @@ public final class App {
     }
 
     /**
+     * Questa classe è di tipo 'Boundary'.
      * Entrypoint of the application.
      *
      * @param args command line arguments
@@ -24,8 +25,8 @@ public final class App {
     public static void main(final String[] args) {
         //System.out.println(new App().getGreeting());
         if(args.length != 0 && (args[0].equals("-h") || args[0].equals("--help"))){
-            Wordle.visualizzaRegole();
-            Wordle.visualizzaComandi();
+            Monitor.visualizzaRegole();
+            Monitor.visualizzaComandi();
         }
         Scanner sc = new Scanner(System.in);
         while(Wordle.isInCorso()){
