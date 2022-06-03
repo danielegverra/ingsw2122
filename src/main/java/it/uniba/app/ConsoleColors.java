@@ -4,14 +4,17 @@ package it.uniba.app;
  * Si occupa di gestire i colori della matrice di tentativi.
  */
 public class ConsoleColors {
+
     /**
      * RESET
      */
+
     public static final String RESET = "\033[0m";  // Text Reset
 
     /**
      * COLORS
      */
+    
     public static final String GREY = "\033[48;2;128;124;124m";                     // GREY
     public static final String GREEN = "\033[48;2;108;169;104m";                    // GREEN
     public static final String YELLOW = "\033[48;2;200;180;91m";                    // YELLOW  

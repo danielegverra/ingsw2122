@@ -1,7 +1,8 @@
 package it.uniba.app;
 
 /**
- * Questa classe è di tipo 'Entity'.
+ * Questa classe è di tipo 'Entity' e 'Control'. 
+ * Si tratta di una classe Singleton.
  * Si occupa di gestire il nucleo del gioco.
  */
 public class Wordle {
@@ -10,59 +11,67 @@ public class Wordle {
      * ATTRIBUTI
     */
 
-    private static String parolaSegreta = "";
-    private static int dimensioneParola = 5;
-    private static int maxTentativi = 6;
-    private static boolean inCorso = true;
+    private static Wordle w = new Wordle();
+    private String parolaSegreta;
+    private int dimensioneParola;
+    private int maxTentativi;
+    private boolean inCorso;
     
 
     /**
      * METODI DI ACCESSO
      */
+
+    private Wordle(){
+        parolaSegreta = "";
+        dimensioneParola = 5;
+        maxTentativi = 6;
+        inCorso = true;
+    }
     
     public static String getParolaSegreta(){
-        return new String(parolaSegreta);
+        return new String(w.parolaSegreta);
     }
     
     public static void setParolaSegreta(String p){
-        if(p.length() > dimensioneParola){
-            System.out.println("Parola segreta troppo lunga, deve avere "+ getDimensioneParola() + " caratteri." );
+        if(p.length() > w.dimensioneParola){
+            Monitor.messaggi("parolalunga", getDimensioneParola());
         }else{
-            if(p.length() < dimensioneParola){
-                System.out.println("Parola segreta troppo corta, deve avere "+ getDimensioneParola() + " caratteri." );
+            if(p.length() < w.dimensioneParola){
+                Monitor.messaggi("parolacorta", getDimensioneParola()); 
             }else{
                 if(!Manager.parolaValida(p)){
-                     System.out.println("Parola segreta non valida.");
+                    Monitor.messaggi("parolanonvalida"); 
                 }else{
-                    parolaSegreta = new String(p);
-                    System.out.println("OK.");
+                    w.parolaSegreta = new String(p);
+                    Monitor.messaggi("parolavalida");
                 }
             }
         }
     }
 
     public static int getDimensioneParola(){
-        return dimensioneParola;
+        return w.dimensioneParola;
     }
 
     public static void setDimensioneParola(int dim){
-        dimensioneParola = dim;
+        w.dimensioneParola = dim;
     }
 
     public static int getMaxTentativi() {
-        return maxTentativi;
+        return w.maxTentativi;
     }
 
     public static void setMaxTentativi(int tent) {
-        maxTentativi = tent;
+        w.maxTentativi = tent;
     }
 
     public static boolean isInCorso() {
-        return inCorso;
+        return w.inCorso;
     }
 
     public static void setInCorso(boolean inCorso) {
-        Wordle.inCorso = inCorso;
+        w.inCorso = inCorso;
     }
 
     /**
@@ -70,44 +79,10 @@ public class Wordle {
     */
 
     /**
-     * Questo metodo permette di visualizzare a video l'elenco completo dei
-     * comandi che l'utente può richiamare.
-     * nb. alcuni di essi possono essere effettuati solo in veste di un 
-     * ruolo specifico.
-     */
-    static void visualizzaComandi(){
-        System.out.println("\nAll'interno del gioco e' possibile eseguire i seguenti comandi:");
-        System.out.println(" 1. /help: consente di visualizzare i comandi disponibili e le regole del gioco");
-        System.out.println(" 2. /ruolo <parola>: consente di selezionare il ruolo di paroliere/giocatore");
-        System.out.println(" 3. /ruolo: consente di mostrare il ruolo corrente");
-        System.out.println(" 4. /esci: consente di chiudere l'applicazione a seguito di una conferma positiva dell'utente ");
-
-        System.out.println("\nDa paroliere e' possibile eseguire i seguenti comandi: ");
-        System.out.println(" 1. /nuova <parola>: consente di impostare una nuova parola segreta, anche durante la sessione di gioco senza uscire dall'applicazione");
-        System.out.println(" 2. /mostra: consente di visualizzare la parola segreta");
-       
-        System.out.println("\nDa giocatore e' possibile eseguire i seguenti comandi: ");
-        System.out.println(" 1. /gioca: consente di visualizzare la matrice dei tentativi vuota se nessuna partita e' in corso");
-        System.out.println(" 2. /abbandona: consente di abbandonare la partita a seguito di una conferma positiva dell'utente\n");
-    }
-
-    /**
-     * Questo metodo permette di visualizzare a video il regolamento del gioco.
-     */
-    static void visualizzaRegole(){
-        System.out.println("Di seguito vengono mostrate le regole e il funzionamento del gioco:\n");
-        System.out.println("Lo scopo del gioco e' indovinare una parola di cinque lettere utilizzando un massimo di sei tentativi.");
-        System.out.println("La parola segreta viene decisa dal paroliere, che per ogni tentativo restituisce tre tipi di indizi utili a restringere il cerchio sulla soluzione");
-        System.out.println("Ogni lettera indovinata nella posizione e' segnata con una V,");
-        System.out.println("ogni lettera presente nella parola segreta ma inserita nella posizione errata e' segnata con S,");
-        System.out.println("e ogni lettera del tutto assente dalla soluzione e' segnata con X.");
-    }
-
-    /**
      * Questo metodo permette di chiudere l'intera sessione di gioco.
      */
     public static void chiudiGioco(){
         setInCorso(false);
-        System.out.println("\nSei uscito dal gioco.");
+        Monitor.messaggi("chiudi");
     }
 }

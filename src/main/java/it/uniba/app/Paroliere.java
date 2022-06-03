@@ -24,9 +24,9 @@ public class Paroliere {
     public static void  visualizzaParola(){
 
         if(!Wordle.getParolaSegreta().equals("")){
-            System.out.println("La parola segreta e' " + Wordle.getParolaSegreta());
-        } else{
-            System.out.println("Non e' presente una parola segreta.");
+            Monitor.messaggi("rivelaparola");
+        } else {
+            Monitor.messaggi("nonesisteparola");
         }
     }
 }
