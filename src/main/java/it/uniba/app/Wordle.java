@@ -1,7 +1,8 @@
 package it.uniba.app;
 
 /**
- * Questa classe è di tipo 'Entity'.
+ * Questa classe è di tipo 'Entity' e 'Control'. 
+ * Si tratta di una classe Singleton.
  * Si occupa di gestire il nucleo del gioco.
  */
 public class Wordle {
@@ -10,31 +11,39 @@ public class Wordle {
      * ATTRIBUTI
     */
 
-    private static String parolaSegreta = "";
-    private static int dimensioneParola = 5;
-    private static int maxTentativi = 6;
-    private static boolean inCorso = true;
+    private static Wordle w = new Wordle();
+    private String parolaSegreta;
+    private int dimensioneParola;
+    private int maxTentativi;
+    private boolean inCorso;
     
 
     /**
      * METODI DI ACCESSO
      */
+
+    private Wordle(){
+        parolaSegreta = "";
+        dimensioneParola = 5;
+        maxTentativi = 6;
+        inCorso = true;
+    }
     
     public static String getParolaSegreta(){
-        return new String(parolaSegreta);
+        return new String(w.parolaSegreta);
     }
     
     public static void setParolaSegreta(String p){
-        if(p.length() > dimensioneParola){
+        if(p.length() > w.dimensioneParola){
             Monitor.messaggi("parolalunga", getDimensioneParola());
         }else{
-            if(p.length() < dimensioneParola){
+            if(p.length() < w.dimensioneParola){
                 Monitor.messaggi("parolacorta", getDimensioneParola()); 
             }else{
                 if(!Manager.parolaValida(p)){
                     Monitor.messaggi("parolanonvalida"); 
                 }else{
-                    parolaSegreta = new String(p);
+                    w.parolaSegreta = new String(p);
                     Monitor.messaggi("parolavalida");
                 }
             }
@@ -42,27 +51,27 @@ public class Wordle {
     }
 
     public static int getDimensioneParola(){
-        return dimensioneParola;
+        return w.dimensioneParola;
     }
 
     public static void setDimensioneParola(int dim){
-        dimensioneParola = dim;
+        w.dimensioneParola = dim;
     }
 
     public static int getMaxTentativi() {
-        return maxTentativi;
+        return w.maxTentativi;
     }
 
     public static void setMaxTentativi(int tent) {
-        maxTentativi = tent;
+        w.maxTentativi = tent;
     }
 
     public static boolean isInCorso() {
-        return inCorso;
+        return w.inCorso;
     }
 
     public static void setInCorso(boolean inCorso) {
-        Wordle.inCorso = inCorso;
+        w.inCorso = inCorso;
     }
 
     /**

@@ -4,7 +4,6 @@ package it.uniba.app;
  * Questa classe è di tipo 'Boundary'.
  * Si occupa di gestire la comunicazione in uscita con l'utente.
  */
-
 public class Monitor {
 
     /**
