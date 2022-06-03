@@ -20,7 +20,7 @@ public class Giocatore {
         if(!Wordle.getParolaSegreta().equals("")){            
             Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
             Boolean partitaFinita = false;
-            System.out.println("\nUna nuova partita sta iniziando!");
+            Monitor.messaggi("nuovapartita");
             Monitor.visualizzaRegole();
             Monitor.visualizzaComandi();
             Monitor.stampaGriglia(p);
@@ -40,19 +40,19 @@ public class Giocatore {
                 
                     if(parolaTentata.compareTo(p.getParola()) == 0){
                         partitaFinita = true;
-                        System.out.println("Parola segreta indovinata.");
-                        System.out.println("Numero tentativi: " + p.getTentativiEffettuati());
+                        Monitor.messaggi("parolaindovinata");
+                        Monitor.messaggi("numerotentativi", p.getTentativiEffettuati());
                         p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
                     }
                 }
             }
 
             if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
-                System.out.println("Hai raggiunto il numero massimo di tentativi!");
-                System.out.println("\nLa parola segreta e': " + p.getParola());
+                Monitor.messaggi("numeromaxtentativi");
+                Monitor.messaggi("rivelaparola", Wordle.getParolaSegreta());
             }
         }else if(Wordle.getParolaSegreta().equals("")){
-            System.out.println("Parola segreta mancante.");
+            Monitor.messaggi("nonesisteparola");
         } 
     }
   

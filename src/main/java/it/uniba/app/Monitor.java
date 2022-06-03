@@ -12,6 +12,39 @@ public class Monitor {
     */
 
     /**
+     * Questo metodo restituisce i messaggi per la gestione del gioco.
+     */
+    public static void messaggi(String msg){
+        if (msg.equals("parolanonvalida")){
+            System.out.println("Parola segreta non valida.");
+        }else if (msg.equals("parolavalida")){
+            System.out.println("OK.");
+        }else if (msg.equals("chiudi")){
+            System.out.println("\nSei uscito dal gioco.");
+        }else if (msg.equals("nonesisteparola")){
+            System.out.println("Non e' presente una parola segreta.");
+        }else if (msg.equals("nuovapartita")){
+            System.out.println("\nUna nuova partita sta iniziando!");
+        }else if (msg.equals("parolaindovinata")){
+            System.out.println("Parola segreta indovinata.");
+        }else if (msg.equals("numeromaxtentativi")){
+            System.out.println("Hai raggiunto il numero massimo di tentativi!");
+        }
+    } 
+
+    public static void messaggi(String msg, Object o){
+        if (msg.equals("parolalunga")){
+            System.out.println("Parola segreta troppo lunga, deve avere "+ o + " caratteri." );
+        }else if (msg.equals("parolacorta")){
+            System.out.println("Parola segreta troppo corta, deve avere "+ o + " caratteri." );
+        }else if (msg.equals("rivelaparola")){
+            System.out.println("La parola segreta e' " + o);
+        }else if (msg.equals("numerotentativi")){
+            System.out.println("Numero tentativi: " + o);
+        }    
+    }
+
+    /**
      * Questo metodo permette di visualizzare la griglia della partita in corso.
      */
     public static void stampaGriglia(Partita p){

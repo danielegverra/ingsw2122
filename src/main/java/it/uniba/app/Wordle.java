@@ -26,16 +26,16 @@ public class Wordle {
     
     public static void setParolaSegreta(String p){
         if(p.length() > dimensioneParola){
-            System.out.println("Parola segreta troppo lunga, deve avere "+ getDimensioneParola() + " caratteri." );
+            Monitor.messaggi("parolalunga", getDimensioneParola());
         }else{
             if(p.length() < dimensioneParola){
-                System.out.println("Parola segreta troppo corta, deve avere "+ getDimensioneParola() + " caratteri." );
+                Monitor.messaggi("parolacorta", getDimensioneParola()); 
             }else{
                 if(!Manager.parolaValida(p)){
-                     System.out.println("Parola segreta non valida.");
+                    Monitor.messaggi("parolanonvalida"); 
                 }else{
                     parolaSegreta = new String(p);
-                    System.out.println("OK.");
+                    Monitor.messaggi("parolavalida");
                 }
             }
         }
@@ -74,6 +74,6 @@ public class Wordle {
      */
     public static void chiudiGioco(){
         setInCorso(false);
-        System.out.println("\nSei uscito dal gioco.");
+        Monitor.messaggi("chiudi");
     }
 }
