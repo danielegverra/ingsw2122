@@ -1,6 +1,6 @@
 package it.uniba.app;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,4 +17,5 @@ public class AppTest {
         assertNotNull(
                 "app should have a greeting", classUnderTest.getGreeting());
     }
+
 }
