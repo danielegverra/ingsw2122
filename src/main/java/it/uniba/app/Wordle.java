@@ -28,6 +28,13 @@ public class Wordle {
         maxTentativi = 6;
         inCorso = true;
     }
+
+    /**
+     * Il seguente metodo restituisce l'unica istanza della classe singoletto.
+     */
+    public static Wordle getWordle(){
+        return w;
+    }
     
     public static String getParolaSegreta(){
         return new String(w.parolaSegreta);
@@ -43,7 +50,7 @@ public class Wordle {
                 if(!Manager.parolaValida(p)){
                     Monitor.messaggi("parolanonvalida"); 
                 }else{
-                    w.parolaSegreta = new String(p);
+                    w.parolaSegreta = p;
                     Monitor.messaggi("parolavalida");
                 }
             }
