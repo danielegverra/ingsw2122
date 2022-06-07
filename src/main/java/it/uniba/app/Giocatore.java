@@ -6,54 +6,55 @@ import java.util.Scanner;
  * Questa classe è di tipo 'Control'.
  * Si occupa di gestire le azioni che può svolgere il giocatore.
  */
-public class Giocatore {
+public final class Giocatore {
 
-    /**
-     * METODI
-     */
+    private Giocatore() {
+
+    }
 
     /**
      * Questo metodo permette di partecipare ad una partita di Wordle,
      * al suo interno vengono richiesti i tentativi all'utente.
+     * @param sc è lo scanner in input.
      */
-    public static void iniziaPartita(Scanner sc){
-        if(!Wordle.getParolaSegreta().equals("")){            
-            Partita p = new Partita(Wordle.getMaxTentativi(), Wordle.getParolaSegreta()); 
+    public static void iniziaPartita(final Scanner sc) {
+        if (!Wordle.getParolaSegreta().equals("")) {
+            String parola = Wordle.getParolaSegreta();
+            int maxTent = Wordle.getMaxTentativi();
+            Partita p = new Partita(maxTent, parola);
             Boolean partitaFinita = false;
             Monitor.messaggi("nuovapartita");
             Monitor.visualizzaRegole();
             Monitor.visualizzaComandi();
             Monitor.stampaGriglia(p);
-            while(p.getTentativiEffettuati() < p.getMaxTentativi() && !partitaFinita){
+            while (p.getTentativiEffettuati() < maxTent && !partitaFinita) {
                 String parolaTentata;
-                parolaTentata= Manager.isTentativo(sc, p, partitaFinita);
-                if (parolaTentata.equals("/ESCI")){
+                int lenght = p.getParola().length();
+                parolaTentata = Manager.tentativo(sc, lenght, partitaFinita);
+                if (parolaTentata.equals("/ESCI")) {
                     return;
-                }
-                else if (parolaTentata.equals("/ABBANDONA")){
+                } else if (parolaTentata.equals("/ABBANDONA")) {
                     return;
-                }
-                else{
-                    p.setGrigliaTentativi(p.getTentativiEffettuati(), parolaTentata);
-                    p.setTentativiEffettuati(p.getTentativiEffettuati()+1);
+                } else {
+                    int currentTent = p.getTentativiEffettuati();
+                    p.setGrigliaTentativi(currentTent, parolaTentata);
+                    p.setTentativiEffettuati(currentTent + 1);
                     Monitor.stampaGriglia(p);
-                
-                    if(parolaTentata.compareTo(p.getParola()) == 0){
+                    if (parolaTentata.compareTo(p.getParola()) == 0) {
                         partitaFinita = true;
                         Monitor.messaggi("parolaindovinata");
-                        Monitor.messaggi("numerotentativi", p.getTentativiEffettuati());
-                        p.setTentativiEffettuati(p.getTentativiEffettuati()-1);
+                        Monitor.messaggi("numerotentativi", currentTent + 1);
+                        p.setTentativiEffettuati(currentTent);
                     }
                 }
             }
 
-            if(p.getTentativiEffettuati() >= p.getMaxTentativi()){
+            if (p.getTentativiEffettuati() >= p.getMaxTentativi()) {
                 Monitor.messaggi("numeromaxtentativi");
                 Monitor.messaggi("rivelaparola", Wordle.getParolaSegreta());
             }
-        }else if(Wordle.getParolaSegreta().equals("")){
+        } else if (Wordle.getParolaSegreta().equals("")) {
             Monitor.messaggi("nonesisteparola");
-        } 
+        }
     }
-  
 }
