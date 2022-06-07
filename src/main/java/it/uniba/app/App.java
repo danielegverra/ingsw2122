@@ -1,5 +1,6 @@
 package it.uniba.app;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -29,7 +30,7 @@ public final class App {
             Monitor.visualizzaRegole();
             Monitor.visualizzaComandi();
         }
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
         while (Wordle.isInCorso()) {
             Manager.inputComando(sc);
         }

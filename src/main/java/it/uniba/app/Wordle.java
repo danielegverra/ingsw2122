@@ -81,7 +81,7 @@ public final class Wordle {
      * parola segreta da indovinare.
      */
     public static String getParolaSegreta() {
-        return new String(w.parolaSegreta);
+        return w.parolaSegreta;
     }
 
     /**
@@ -102,7 +102,7 @@ public final class Wordle {
                 if (!Manager.parolaValida(p)) {
                     Monitor.messaggi("parolanonvalida");
                 } else {
-                    w.parolaSegreta = new String(p);
+                    w.parolaSegreta = p;
                     Monitor.messaggi("parolavalida");
                 }
             }

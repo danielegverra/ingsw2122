@@ -87,7 +87,7 @@ public final class Partita {
      */
 
     public String getParola() {
-        return new String(parolaSegreta);
+        return parolaSegreta;
     }
 
     /**
@@ -99,7 +99,7 @@ public final class Partita {
      */
 
     public void setParola(final String parola) {
-        this.parolaSegreta = new String(parola);
+        this.parolaSegreta = parola;
     }
 
     /**
@@ -111,7 +111,7 @@ public final class Partita {
      */
 
     public String getGrigliaTentativi(final int index) {
-        return new String(grigliaTentativi[index]);
+        return grigliaTentativi[index];
     }
 
     /**
@@ -123,7 +123,7 @@ public final class Partita {
      */
 
     public void setGrigliaTentativi(final int index, final String tentativo) {
-        grigliaTentativi[index] = new String(tentativo);
+        grigliaTentativi[index] = tentativo;
     }
 
     /**
@@ -140,10 +140,10 @@ public final class Partita {
     public Partita(final int maxTent, final String parolaSeg) {
         this.tentativiEffettuati = 0;
         this.maxTentativi = maxTent;
-        this.parolaSegreta = new String(parolaSeg);
+        this.parolaSegreta = parolaSeg;
         grigliaTentativi = new String[this.maxTentativi];
         for (int i = 0; i < this.grigliaTentativi.length; i++) {
-            grigliaTentativi[i] = new String("");
+            grigliaTentativi[i] = "";
         }
     }
 }
