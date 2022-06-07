@@ -54,6 +54,11 @@ public final class Monitor {
             System.out.println("Tentativo incompleto");
         } else if (msg.equals("tentativoeccessivo")) {
             System.out.println("Tentativo eccessivo");
+        } else if (msg.equals("comandoslash")) {
+            System.out.println("Tutti i comandi devono iniziare per '/'");
+        } else if (msg.equals("massimoparole")) {
+            System.out.println("Tutti i comandi devono"
+            + "avere massimo due parole");
         }
     }
 

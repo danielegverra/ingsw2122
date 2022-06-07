@@ -57,11 +57,10 @@ public final class Manager {
         String[] s = c.trim().split("\\s+");
         if (s.length >= 1) {
             if (s[0].charAt(0) != '/') {
-                System.out.println("Tutti i comandi devono iniziare per '/'");
+                Monitor.messaggi("comandoslash");
             } else {
                 if (s.length > 2) {
-                    System.out.println("Tutti i comandi devono"
-                    + "avere massimo due parole.");
+                    Monitor.messaggi("massimoparole");
                 } else {
                     if (s.length == 1) {
                         String[] ss = new String[2];
