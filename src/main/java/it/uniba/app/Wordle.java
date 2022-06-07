@@ -1,12 +1,12 @@
 package it.uniba.app;
 
 /**
- * Questa classe è di tipo 'Entity' e 'Control'. 
+ * Questa classe è di tipo 'Entity' e 'Control'.
  * Si tratta di una classe Singleton.
  * Si occupa di gestire il nucleo del gioco.
  */
-public class Wordle {
-    
+public final class Wordle {
+
     /**
      * MAX_PAROLA è una costante
      * relativa alla lunghezza massima
@@ -53,15 +53,13 @@ public class Wordle {
      * partita è in corso o è terminata.
      */
     private boolean inCorso;
-    
 
     /**
      * E' il costruttore della classe Wordle
      * che inizializza gli attributi della
      * classe Wordle.
      */
-
-    private Wordle(){
+    private Wordle() {
         parolaSegreta = "";
         dimensioneParola = MAX_PAROLA;
         maxTentativi = MAX_TENTATIVI;
@@ -73,10 +71,10 @@ public class Wordle {
      * l'unica istanza della classe singoletto.
      * @return restituisce l'istanza w di Wordle.
      */
-    public static Wordle getWordle(){
+    public static Wordle getWordle() {
         return w;
     }
-    
+
     /**
      * E' un metodo di acesso.
      * @return viene restituita la
