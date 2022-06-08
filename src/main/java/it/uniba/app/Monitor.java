@@ -22,8 +22,6 @@ public final class Monitor {
             System.out.println("OK.");
         } else if (msg.equals("chiudi")) {
             System.out.println("\nSei uscito dal gioco.");
-        } else if (msg.equals("nonesisteparola")) {
-            System.out.println("Non e' presente una parola segreta.");
         } else if (msg.equals("nuovapartita")) {
             System.out.println("\nUna nuova partita sta iniziando!");
         } else if (msg.equals("parolaindovinata")) {

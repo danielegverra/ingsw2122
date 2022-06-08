@@ -145,12 +145,12 @@ public final class Manager {
      */
     static boolean richiediConferma(final Scanner sc) {
         Monitor.messaggi("confermascelta");
-        Monitor.messaggi(("digitascelta"));
+        Monitor.messaggi("digitascelta");
         String r = sc.nextLine().toUpperCase();
 
         while (!r.equals("S") && !r.equals("N")) {
             Monitor.messaggi("sceltanonvalida");
-            Monitor.messaggi(("digitascelta"));
+            Monitor.messaggi("digitascelta");
             r = sc.nextLine().toUpperCase();
         }
 
@@ -187,7 +187,7 @@ public final class Manager {
                 Monitor.messaggi("tentativoincompleto");
                 Monitor.messaggi("parametriparola");
             } else if (attpt.length() > d) {
-                Monitor.messaggi(("tentativoeccessivo"));
+                Monitor.messaggi("tentativoeccessivo");
                 Monitor.messaggi("parametriparola");
             }
         } while ((attpt.length() != d || !Manager.parolaValida(attpt)) && !end);
