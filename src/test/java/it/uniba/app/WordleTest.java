@@ -162,7 +162,7 @@ public class WordleTest{
     public void testChiudiGioco() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
         final Field field = Wordle.getWordle().getClass().getDeclaredField("inCorso"); // assegno a field il campo inCorso di Wordle
         field.setAccessible(true); //campi di Wordle privati --> devono essere resi accessibili
-        Wordle.setInCorso(false);
+        Wordle.chiudiGioco();
         assertEquals(false, field.get(Wordle.getWordle()));
     }
 
