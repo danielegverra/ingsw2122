@@ -43,7 +43,7 @@ public final class Monitor {
         } else if (msg.equals("sceltanonvalida")) {
             System.out.println("Non hai inserito una parola valida.");
         } else if (msg.equals("inseriscitentativo")) {
-            System.out.println("Inserisci il tuo tentativo:\n");
+            System.out.println("\nInserisci il tuo tentativo: ");
         } else if (msg.equals("abbandonapartita")) {
             System.out.println("Hai deciso di abbandonare la partita.\n Ci rivediamo presto");
         } else if (msg.equals("tentativononvalido")) {
