@@ -28,7 +28,7 @@ public final class Paroliere {
         if (!Wordle.getParolaSegreta().equals("")) {
             Monitor.messaggi("rivelaparola");
         } else {
-            Monitor.messaggi("nonesisteparola");
+            Monitor.messaggi("parolaassente");
         }
     }
 }

@@ -57,11 +57,10 @@ public final class Manager {
         String[] s = c.trim().split("\\s+");
         if (s.length >= 1) {
             if (s[0].charAt(0) != '/') {
-                System.out.println("Tutti i comandi devono iniziare per '/'");
+                Monitor.messaggi("comandoslash");
             } else {
                 if (s.length > 2) {
-                    System.out.println("Tutti i comandi devono"
-                    + "avere massimo due parole.");
+                    Monitor.messaggi("massimoparole");
                 } else {
                     if (s.length == 1) {
                         String[] ss = new String[2];
@@ -85,7 +84,7 @@ public final class Manager {
             if (s[1] != null) {
                 Paroliere.impostaParolaSegreta(s[1]);
             } else {
-                System.out.println("Parola segreta assente.");
+                Monitor.messaggi("parolaassente");
             }
         } else if (s[0].equals("/GIOCA")) {
             if (s[1] == null) {
@@ -115,7 +114,7 @@ public final class Manager {
                 Monitor.messaggi("secondaparola");
             }
         } else {
-            System.out.println("Comando non riconosciuto.");
+            Monitor.messaggi("comandoassente");
         }
     }
 
@@ -145,14 +144,13 @@ public final class Manager {
      * falso altrimenti.
      */
     static boolean richiediConferma(final Scanner sc) {
-        System.out.println("\nSei sicuro della tua scelta?");
-        System.out.println("\nDigita S se vuoi confermare la tua decisione.");
-        System.out.println("Digita N se vuoi tornare a giocare.");
+        Monitor.messaggi("confermascelta");
+        Monitor.messaggi("digitascelta");
         String r = sc.nextLine().toUpperCase();
 
         while (!r.equals("S") && !r.equals("N")) {
-            System.out.println("Non hai inserito una parola valida!");
-            System.out.println("\nInserisci S o N:");
+            Monitor.messaggi("sceltanonvalida");
+            Monitor.messaggi("digitascelta");
             r = sc.nextLine().toUpperCase();
         }
 
@@ -170,7 +168,7 @@ public final class Manager {
     static String tentativo(final Scanner sc, final int d, final Boolean end) {
         String attpt;
         do {
-            System.out.print("\nInserisci il tuo tentativo:\n> ");
+            Monitor.messaggi("inseriscitentativo");
             attpt = sc.nextLine().toUpperCase().trim();
             if (attpt.equals("/ESCI")) {
                 if (Manager.richiediConferma(sc)) {
@@ -179,25 +177,18 @@ public final class Manager {
                 }
             } else if (attpt.equals("/ABBANDONA")) {
                 if (Manager.richiediConferma(sc)) {
-                    System.out.println("Hai deciso di abbandonare la partita!");
-                    System.out.println("\nCi rivediamo presto!");
+                    Monitor.messaggi("abbandonapartita");
                     return attpt;
                 }
             } else if (!Manager.parolaValida(attpt)) {
-                System.out.println("Tentativo non valido.");
-                System.out.print("\nLa parola da inserire deve avere lunghezza "
-                + d + " e deve\nessere composta"
-                + " da soli caratteri dell'alfabeto:\n");
+                Monitor.messaggi("tentativononvalido");
+                Monitor.messaggi("parametriparola");
             } else if (attpt.length() < d) {
-                System.out.println("Tentativo incompleto.");
-                System.out.print("\nLa parola da inserire deve avere lunghezza "
-                + d + " e deve\nessere composta"
-                + " da soli caratteri dell'alfabeto:\n");
+                Monitor.messaggi("tentativoincompleto");
+                Monitor.messaggi("parametriparola");
             } else if (attpt.length() > d) {
-                System.out.println("Tentativo eccessivo.");
-                System.out.print("\nLa parola da inserire deve avere lunghezza "
-                + d + " e deve\nessere composta da soli"
-                + "caratteri dell'alfabeto:\n");
+                Monitor.messaggi("tentativoeccessivo");
+                Monitor.messaggi("parametriparola");
             }
         } while ((attpt.length() != d || !Manager.parolaValida(attpt)) && !end);
 

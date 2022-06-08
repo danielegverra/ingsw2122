@@ -22,8 +22,6 @@ public final class Monitor {
             System.out.println("OK.");
         } else if (msg.equals("chiudi")) {
             System.out.println("\nSei uscito dal gioco.");
-        } else if (msg.equals("nonesisteparola")) {
-            System.out.println("Non e' presente una parola segreta.");
         } else if (msg.equals("nuovapartita")) {
             System.out.println("\nUna nuova partita sta iniziando!");
         } else if (msg.equals("parolaindovinata")) {
@@ -33,6 +31,32 @@ public final class Monitor {
         } else if (msg.equals("secondaparola")) {
             System.out.println("Questo comando non ha bisogno"
             + "di una seconda parola.");
+        } else if (msg.equals("parolaassente")) {
+            System.out.println("Parola segreta assente.");
+        } else if (msg.equals("comandoassente")) {
+            System.out.println("Comando non riconosciuto.");
+        } else if (msg.equals("confermascelta")) {
+            System.out.println("\nSei sicuro della tua scelta?");
+        } else if (msg.equals("digitascelta")) {
+            System.out.println("Digita S se vuoi confermare la tua decisione.");
+            System.out.println("Digita N se vuoi tornare a giocare.");
+        } else if (msg.equals("sceltanonvalida")) {
+            System.out.println("Non hai inserito una parola valida.");
+        } else if (msg.equals("inseriscitentativo")) {
+            System.out.println("Inserisci il tuo tentativo:\n");
+        } else if (msg.equals("abbandonapartita")) {
+            System.out.println("Hai deciso di abbandonare la partita.\n Ci rivediamo presto");
+        } else if (msg.equals("tentativononvalido")) {
+            System.out.println("Tentativo non valido");
+        } else if (msg.equals("tentativoincompleto")) {
+            System.out.println("Tentativo incompleto");
+        } else if (msg.equals("tentativoeccessivo")) {
+            System.out.println("Tentativo eccessivo");
+        } else if (msg.equals("comandoslash")) {
+            System.out.println("Tutti i comandi devono iniziare per '/'");
+        } else if (msg.equals("massimoparole")) {
+            System.out.println("Tutti i comandi devono"
+            + "avere massimo due parole");
         }
     }
 
@@ -56,6 +80,10 @@ public final class Monitor {
             System.out.println("La parola segreta e' " + o);
         } else if (msg.equals("numerotentativi")) {
             System.out.println("Numero tentativi: " + o);
+        } else if (msg.equals("parametriparola")) {
+            System.out.print("\nLa parola da inserire deve avere lunghezza "
+                + o + " e deve\nessere composta"
+                + " da soli caratteri dell'alfabeto:\n");
         }
     }
 
