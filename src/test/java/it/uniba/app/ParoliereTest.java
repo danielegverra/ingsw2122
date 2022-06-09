@@ -49,8 +49,6 @@ public class ParoliereTest {
         System.setIn(in);
         outContent= new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent,true,Charset.defaultCharset().toString()));
-        outContent= new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent,true,Charset.defaultCharset().toString()));		
     }
 
     @Test
@@ -68,6 +66,12 @@ public class ParoliereTest {
     @Test
     public void testImpostaParolaSegretaShort() {
         Paroliere.impostaParolaSegreta("AIA");
+        assertEquals("PLUTO", Wordle.getParolaSegreta());
+    }
+
+    @Test
+    public void testImpostaParolaSegretaNonValida() {
+        Paroliere.impostaParolaSegreta("@@@@@");
         assertEquals("PLUTO", Wordle.getParolaSegreta());
     }
 
