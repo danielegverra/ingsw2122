@@ -25,7 +25,7 @@ final class AppTest { //classe utilizzata per il testing.
      */
     private String[] args = new String[2];
     /**
-     * Stream in cui scriviamo bytes.
+     * Stream in cui si possono scrivere array di byte.
      */
     private  ByteArrayOutputStream outContent;
     /**
