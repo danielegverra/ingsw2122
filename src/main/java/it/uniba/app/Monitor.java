@@ -29,7 +29,7 @@ public final class Monitor {
         } else if (msg.equals("numeromaxtentativi")) {
             System.out.println("Hai raggiunto il numero massimo di tentativi!");
         } else if (msg.equals("secondaparola")) {
-            System.out.println("Questo comando non ha bisogno"
+            System.out.println("Questo comando non ha bisogno "
             + "di una seconda parola.");
         } else if (msg.equals("parolaassente")) {
             System.out.println("Parola segreta assente.");
@@ -43,20 +43,20 @@ public final class Monitor {
         } else if (msg.equals("sceltanonvalida")) {
             System.out.println("Non hai inserito una parola valida.");
         } else if (msg.equals("inseriscitentativo")) {
-            System.out.println("Inserisci il tuo tentativo:\n");
+            System.out.println("\nInserisci il tuo tentativo: ");
         } else if (msg.equals("abbandonapartita")) {
-            System.out.println("Hai deciso di abbandonare la partita.\n Ci rivediamo presto");
+            System.out.println("Hai deciso di abbandonare la partita.\nCi rivediamo presto.");
         } else if (msg.equals("tentativononvalido")) {
-            System.out.println("Tentativo non valido");
+            System.out.println("Tentativo non valido.");
         } else if (msg.equals("tentativoincompleto")) {
-            System.out.println("Tentativo incompleto");
+            System.out.println("Tentativo incompleto.");
         } else if (msg.equals("tentativoeccessivo")) {
-            System.out.println("Tentativo eccessivo");
+            System.out.println("Tentativo eccessivo.");
         } else if (msg.equals("comandoslash")) {
-            System.out.println("Tutti i comandi devono iniziare per '/'");
+            System.out.println("Tutti i comandi devono iniziare per '/'.");
         } else if (msg.equals("massimoparole")) {
-            System.out.println("Tutti i comandi devono"
-            + "avere massimo due parole");
+            System.out.println("Tutti i comandi devono "
+            + "avere massimo due parole.");
         }
     }
 
@@ -226,9 +226,9 @@ public final class Monitor {
      * ruolo specifico.
      */
     static void visualizzaComandi() {
-        System.out.println("\nAll'interno del gioco e' possibile"
+        System.out.println("\nAll'interno del gioco e' possibile "
         + "eseguire i seguenti comandi:");
-        System.out.println(" 1. /help: consente di visualizzare i comandi"
+        System.out.println(" 1. /help: consente di visualizzare i comandi "
         + "disponibili e le regole del gioco");
         System.out.println(" 2. /esci: consente di chiudere "
         + "l'applicazione a seguito di una conferma positiva dell'utente ");
@@ -267,7 +267,6 @@ public final class Monitor {
         + "segreta ma inserita nella posizione "
         + "errata e' evidenziata in giallo");
         System.out.println("e ogni lettera del tutto assente"
-        + "dalla soluzione e' evidenziata in grigio.");
+        + "dalla soluzione e' evidenziata in grigio."); 
     }
-
 }

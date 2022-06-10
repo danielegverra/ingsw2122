@@ -24,9 +24,10 @@ public final class Paroliere {
      * segreta corrente.
      */
     public static void  visualizzaParola() {
+        String parola = Wordle.getParolaSegreta();
 
-        if (!Wordle.getParolaSegreta().equals("")) {
-            Monitor.messaggi("rivelaparola");
+        if (!parola.equals("")) {
+            Monitor.messaggi("rivelaparola", parola);
         } else {
             Monitor.messaggi("parolaassente");
         }

@@ -53,7 +53,7 @@ public final class Manager {
      * @return un array di Stringhe
      * contenente i comandi dati in input.
      */
-    private static String[] scannerWordle(final String c) {
+    public static String[] scannerWordle(final String c) {
         String[] s = c.trim().split("\\s+");
         if (s.length >= 1) {
             if (s[0].charAt(0) != '/') {
@@ -79,7 +79,7 @@ public final class Manager {
      * @param sc è lo scanner in input
      * @param s è l'array di stringhe contenente i comandi splittati
      */
-    private static void parserWordle(final Scanner sc, final String[] s) {
+    public static void parserWordle(final Scanner sc, final String[] s) {
         if (s[0].equals("/NUOVA")) {
             if (s[1] != null) {
                 Paroliere.impostaParolaSegreta(s[1]);
@@ -182,13 +182,13 @@ public final class Manager {
                 }
             } else if (!Manager.parolaValida(attpt)) {
                 Monitor.messaggi("tentativononvalido");
-                Monitor.messaggi("parametriparola");
+                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
             } else if (attpt.length() < d) {
                 Monitor.messaggi("tentativoincompleto");
-                Monitor.messaggi("parametriparola");
+                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
             } else if (attpt.length() > d) {
                 Monitor.messaggi("tentativoeccessivo");
-                Monitor.messaggi("parametriparola");
+                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
             }
         } while ((attpt.length() != d || !Manager.parolaValida(attpt)) && !end);
 

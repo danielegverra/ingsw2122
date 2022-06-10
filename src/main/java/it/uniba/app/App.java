@@ -17,19 +17,31 @@ public final class App {
         return "Hello World!";
     }
 
+     /**
+     * Questa classe è di tipo 'Boundary'.
+     * Entrypoint of the application.
+     *
+     * @param args argomento a linea di comando
+     * @param isArgs booleano che verifica la presenza di 
+     * argomenti in input 
+     */
+    public static void getHelp(final String[] args, boolean isArgs) {
+        if (isArgs && (args[0].equals("-h") || args[0].equals("--help"))) {
+            Monitor.visualizzaComandi();
+            Monitor.visualizzaRegole();
+        }
+    }
+
     /**
      * Questa classe è di tipo 'Boundary'.
      * Entrypoint of the application.
      *
-     * @param args command line arguments
+     * @param args argomento a linea di comando
      */
     public static void main(final String[] args) {
         //System.out.println(new App().getGreeting());
         boolean isArgs = args.length != 0;
-        if (isArgs && (args[0].equals("-h") || args[0].equals("--help"))) {
-            Monitor.visualizzaRegole();
-            Monitor.visualizzaComandi();
-        }
+        App.getHelp(args, isArgs);
         Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
         while (Wordle.isInCorso()) {
             Manager.inputComando(sc);
