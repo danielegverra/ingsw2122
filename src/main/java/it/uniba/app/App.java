@@ -22,10 +22,10 @@ public final class App {
      * Entrypoint of the application.
      *
      * @param args argomento a linea di comando
-     * @param isArgs booleano che verifica la presenza di 
-     * argomenti in input 
+     * @param isArgs booleano che verifica la presenza di
+     * argomenti in input
      */
-    public static void getHelp(final String[] args, boolean isArgs) {
+    public static void getHelp(final String[] args, final boolean isArgs) {
         if (isArgs && (args[0].equals("-h") || args[0].equals("--help"))) {
             Monitor.visualizzaComandi();
             Monitor.visualizzaRegole();

@@ -1,6 +1,8 @@
 package it.uniba.app;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -16,31 +18,80 @@ import org.junit.jupiter.api.Test;
 /**
  * Main test class of the application.
  */
-public class AppTest {
-
-    String[] args= new String[2];
+final class AppTest { //classe utilizzata per il testing.
+    /**
+     * Array di stringhe che contiene ciò
+     * che l'utente ha inserito da tastiera.
+     */
+    private String[] args = new String[2];
+    /**
+     * Stream in cui si possono scrivere array di byte.
+     */
     private  ByteArrayOutputStream outContent;
-	private  ByteArrayInputStream in;
-	private static  PrintStream sysOutBackup = System.out;
-	private static  InputStream sysInBackup = System.in;
-
-    static Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
-
+    /**
+     * Buffer che contiene bytes che possono essere letti dallo stream.
+     */
+    private ByteArrayInputStream in;
+    /**
+     * Aggiunge funzionalità ad uno stream.
+     */
+    private static PrintStream sysOutBackup = System.out;
+    /**
+     * Questo metodo testa il funzionamento di inputcomando
+     * quando gli viene passato un input valido.
+     */
+    private static InputStream sysInBackup = System.in;
+    /**
+     * L'attributo sc è lo scanner che viene passato in input(?).
+     */
+    private static Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
+    /**
+     * Funzione che restituisce lo scanner.
+     * @return Lo scanner.
+     */
+    public static Scanner getSc() {
+        return sc;
+    }
+    /**
+     * Funzione per settare lo scanner.
+     * @param s è lo scanner.
+     */
+    public static void setSc(final Scanner s) {
+        AppTest.sc = s;
+    }
+    /**
+     * Funzione che restituisce gli args.
+     * @return gli args.
+     */
+    public String[] getArgs() {
+        return args;
+    }
+    /**
+     * Funzione per settare gli args.
+     * @param a è un array di String.
+     */
+    public void setArgs(final String[] a) {
+        this.args = a;
+    }
+    /**
+     * Operazioni che andranno eseguite sempre a fine test.
+     */
     @AfterAll
     public static void restoreStreams() {
         System.setOut(sysOutBackup);
         System.setIn(sysInBackup);
         sc.close();
     }
-   
+    /**
+     * Operazioni che andranno eseguite prima di ogni test.
+     */
     @BeforeEach
     public void setUp() throws Exception {
         in = new ByteArrayInputStream("s".getBytes(Charset.defaultCharset()));
         System.setIn(in);
-        outContent= new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent,true,Charset.defaultCharset().toString()));
-        outContent= new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent,true,Charset.defaultCharset().toString()));		
+        outContent = new ByteArrayOutputStream();
+        String charset = Charset.defaultCharset().toString();
+        System.setOut(new PrintStream(outContent, true, charset));
     }
 
 
@@ -53,12 +104,14 @@ public class AppTest {
         assertNotNull(
                 "app should have a greeting", classUnderTest.getGreeting());
     }
-
+    /**
+     * Funzione che testa la funzinalità help.
+     */
     @Test
     public void testMainGetHelpH() throws UnsupportedEncodingException {
         String ls = System.getProperty("line.separator");
-		String msg = "\nAll'interno del gioco e' possibile "
-        + "eseguire i seguenti comandi:" + ls 
+        String msg = "\nAll'interno del gioco e' possibile "
+        + "eseguire i seguenti comandi:" + ls
         + " 1. /help: consente di visualizzare i comandi "
         + "disponibili e le regole del gioco" + ls
         + " 2. /esci: consente di chiudere "
@@ -71,7 +124,7 @@ public class AppTest {
         + " 2. /mostra: consente di visualizzare "
         + "la parola segreta" + ls
         + "\nDa giocatore e' possibile "
-        + "eseguire i seguenti comandi: " + ls 
+        + "eseguire i seguenti comandi: " + ls
         + " 1. /gioca: consente di visualizzare la"
         + "matrice dei tentativi vuota se nessuna partita e' in corso" + ls
         + " 2. /abbandona: consente di abbandonare"
@@ -92,16 +145,19 @@ public class AppTest {
         + "errata e' evidenziata in giallo" + ls
         + "e ogni lettera del tutto assente"
         + "dalla soluzione e' evidenziata in grigio." + ls;
-        args[0]= "-h";
+        args[0] = "-h";
         App.getHelp(args, true);
-        assertEquals(msg, outContent.toString(Charset.defaultCharset().toString()));
+        String charset = Charset.defaultCharset().toString();
+        assertEquals(msg, outContent.toString(charset));
     }
-
+    /**
+     * Funzione che testa il comando help.
+     */
     @Test
     public void testMainGetHelpHelp() throws UnsupportedEncodingException {
         String ls = System.getProperty("line.separator");
-		String msg = "\nAll'interno del gioco e' possibile "
-        + "eseguire i seguenti comandi:" + ls 
+        String msg = "\nAll'interno del gioco e' possibile "
+        + "eseguire i seguenti comandi:" + ls
         + " 1. /help: consente di visualizzare i comandi "
         + "disponibili e le regole del gioco" + ls
         + " 2. /esci: consente di chiudere "
@@ -114,7 +170,7 @@ public class AppTest {
         + " 2. /mostra: consente di visualizzare "
         + "la parola segreta" + ls
         + "\nDa giocatore e' possibile "
-        + "eseguire i seguenti comandi: " + ls 
+        + "eseguire i seguenti comandi: " + ls
         + " 1. /gioca: consente di visualizzare la"
         + "matrice dei tentativi vuota se nessuna partita e' in corso" + ls
         + " 2. /abbandona: consente di abbandonare"
@@ -135,9 +191,10 @@ public class AppTest {
         + "errata e' evidenziata in giallo" + ls
         + "e ogni lettera del tutto assente"
         + "dalla soluzione e' evidenziata in grigio." + ls;
-        args[0]= "--help";
+        args[0] = "--help";
         App.getHelp(args, true);
-        assertEquals(msg, outContent.toString(Charset.defaultCharset().toString()));
+        String charset = Charset.defaultCharset().toString();
+        assertEquals(msg, outContent.toString(charset));
     }
 
 }
