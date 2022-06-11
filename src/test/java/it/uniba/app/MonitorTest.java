@@ -402,16 +402,16 @@ public class MonitorTest {
 
     /**
      * Questo metodo testa il funzionamento di messaggi(String)
-     * quando è passata la parola 'parametriparola'.
+     * quando è passata la parola 'paramparola'.
      * @throws UnsupportedEncodingException
      */
     @Test
-    public void testMessaggiParametriParola()
+    public void testMessaggiParamParola()
     throws UnsupportedEncodingException {
         String msg = "\nLa parola da inserire deve avere lunghezza "
         + Wordle.getDimensioneParola() + " e deve\nessere composta"
         + " da soli caratteri dell'alfabeto:\n";
-        Monitor.messaggi("parametriparola",  Wordle.getDimensioneParola());
+        Monitor.messaggi("paramparola",  Wordle.getDimensioneParola());
         String res = outContent.toString(Charset.defaultCharset().toString());
         assertEquals(msg, res);
     }

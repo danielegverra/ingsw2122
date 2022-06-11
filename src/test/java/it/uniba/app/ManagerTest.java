@@ -85,7 +85,8 @@ public class ManagerTest {
         String ls = System.getProperty("line.separator");
         String msg = "\nInserire un comando:\n> "
         + "Parola segreta assente." + ls;
-        Scanner sc = new Scanner(new ByteArrayInputStream(("/MOSTRA").getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(("/MOSTRA").getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.inputComando(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -103,7 +104,9 @@ public class ManagerTest {
         String ls = System.getProperty("line.separator");
         String msg = "\nInserire un comando:\n> "
         + "" + ls;
-        Scanner sc = new Scanner(new ByteArrayInputStream((ls + "/MOSTRA").getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(
+            (ls + "/MOSTRA").getBytes(Charset.forName(
+                "UTF-8"))), StandardCharsets.UTF_8);
         Manager.inputComando(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -165,7 +168,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/NUOVA";
         s[1] = "MANGO";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -184,7 +188,8 @@ public class ManagerTest {
         String msg = "Parola segreta assente." + ls;
         String[] s = new String[2];
         s[0] = "/NUOVA";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -205,7 +210,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/GIOCA";
         s[1] = "CIAO";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -307,7 +313,8 @@ public class ManagerTest {
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
         String command = "/ESCI" + ls + "S";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -409,7 +416,8 @@ public class ManagerTest {
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
         String command = "/ABBANDONA" + ls + "S";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -556,7 +564,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
-        Scanner sc = new Scanner(new ByteArrayInputStream("MANGO".getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream("MANGO".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -577,7 +586,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/HELP";
         s[1] = "CIAO";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -631,7 +641,8 @@ public class ManagerTest {
 
         String[] s = new String[2];
         s[0] = "/HELP";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -652,7 +663,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/MOSTRA";
         s[1] = "CIAO";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -672,7 +684,8 @@ public class ManagerTest {
         + Wordle.getParolaSegreta() + ls;
         String[] s = new String[2];
         s[0] = "/MOSTRA";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -694,7 +707,8 @@ public class ManagerTest {
         + "\nSei uscito dal gioco." + ls;
         String[] s = new String[2];
         s[0] = "/ESCI";
-        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -715,7 +729,8 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/ESCI";
         s[1] = "CIAO";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -734,7 +749,8 @@ public class ManagerTest {
         String msg = "Comando non riconosciuto." + ls;
         String[] s = new String[2];
         s[0] = "SALVE";
-        Scanner sc = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -790,7 +806,8 @@ public class ManagerTest {
      */
     @Test
     public void testRichiediConfermaTrue() {
-        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         assertTrue(Manager.richiediConferma(sc));
         sc.close();
     }
@@ -802,7 +819,8 @@ public class ManagerTest {
      */
     @Test
     public void testRichiediConfermaFalse() {
-        Scanner sc = new Scanner(new ByteArrayInputStream("N".getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream("N".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         assertTrue(!Manager.richiediConferma(sc));
         sc.close();
     }
@@ -823,7 +841,8 @@ public class ManagerTest {
         + "Digita S se vuoi confermare la tua decisione." + ls
         + "Digita N se vuoi tornare a giocare." + ls;
         String command = "BYE" + ls + "S";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.richiediConferma(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -846,7 +865,8 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "@@@@@" + ls + "MANGO";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -870,7 +890,8 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "KEY" + ls + "MANGO";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
@@ -893,7 +914,8 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "BATMAN" + ls + "MANGO";
-        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();

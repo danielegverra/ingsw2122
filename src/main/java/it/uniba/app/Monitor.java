@@ -45,7 +45,8 @@ public final class Monitor {
         } else if (msg.equals("inseriscitentativo")) {
             System.out.println("\nInserisci il tuo tentativo: ");
         } else if (msg.equals("abbandonapartita")) {
-            System.out.println("Hai deciso di abbandonare la partita.\nCi rivediamo presto.");
+            System.out.println("Hai deciso di abbandonare la partita."
+            + "\nCi rivediamo presto.");
         } else if (msg.equals("tentativononvalido")) {
             System.out.println("Tentativo non valido.");
         } else if (msg.equals("tentativoincompleto")) {
@@ -80,7 +81,7 @@ public final class Monitor {
             System.out.println("La parola segreta e' " + o);
         } else if (msg.equals("numerotentativi")) {
             System.out.println("Numero tentativi: " + o);
-        } else if (msg.equals("parametriparola")) {
+        } else if (msg.equals("paramparola")) {
             System.out.print("\nLa parola da inserire deve avere lunghezza "
                 + o + " e deve\nessere composta"
                 + " da soli caratteri dell'alfabeto:\n");
@@ -267,6 +268,6 @@ public final class Monitor {
         + "segreta ma inserita nella posizione "
         + "errata e' evidenziata in giallo");
         System.out.println("e ogni lettera del tutto assente"
-        + "dalla soluzione e' evidenziata in grigio."); 
+        + "dalla soluzione e' evidenziata in grigio.");
     }
 }

@@ -182,13 +182,13 @@ public final class Manager {
                 }
             } else if (!Manager.parolaValida(attpt)) {
                 Monitor.messaggi("tentativononvalido");
-                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
+                Monitor.messaggi("paramparola", Wordle.getDimensioneParola());
             } else if (attpt.length() < d) {
                 Monitor.messaggi("tentativoincompleto");
-                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
+                Monitor.messaggi("paramparola", Wordle.getDimensioneParola());
             } else if (attpt.length() > d) {
                 Monitor.messaggi("tentativoeccessivo");
-                Monitor.messaggi("parametriparola", Wordle.getDimensioneParola());
+                Monitor.messaggi("paramparola", Wordle.getDimensioneParola());
             }
         } while ((attpt.length() != d || !Manager.parolaValida(attpt)) && !end);
 
