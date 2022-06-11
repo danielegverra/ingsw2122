@@ -18,12 +18,12 @@ public class PartitaTest {
     /**
      * Variabile costante che rappresenta il numero massimo di tentativi.
      */
-    private final int maxTent = 6;
+    private static final int MAXTENT = 6;
 
 
     @BeforeEach
     private void setUpBeforeClass() throws Exception {
-        partita = new Partita(maxTent, "MAMMA");
+        partita = new Partita(MAXTENT, "MAMMA");
      }
      /**
       * metodo che testa il set dei tentativi effettuati.
@@ -36,7 +36,7 @@ public class PartitaTest {
     public void testSetTentativiEffettuati()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int tentativiEffettuati = maxTent - maxTent / 2;
+        int tentativiEffettuati = MAXTENT - MAXTENT / 2;
         final Field field =
         partita.getClass().getDeclaredField("tentativiEffettuati");
         // assegno a field il campo tentativiEffettuati di Partita
@@ -71,7 +71,7 @@ public class PartitaTest {
     public void testSetMaxtentativi()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int maxTentativi = maxTent - maxTent / 2;
+        int maxTentativi = MAXTENT - MAXTENT / 2;
         final Field field = partita.getClass().getDeclaredField("maxTentativi");
         // assegno a field il campo maxTentativi di Partita
         field.setAccessible(true);
@@ -92,7 +92,7 @@ public class PartitaTest {
     public void testGetMaxtentativiClasse()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        assertEquals(maxTent, partita.getMaxTentativi());
+        assertEquals(MAXTENT, partita.getMaxTentativi());
     }
     /**
       * metodo che testa il set della parola.
