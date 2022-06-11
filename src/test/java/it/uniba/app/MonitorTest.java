@@ -428,48 +428,50 @@ public class MonitorTest {
         p.setGrigliaTentativi(0, "LIMBO");
         String ls = System.getProperty("line.separator");
         String msg = ConsoleColors.WHITE + " ";
+        StringBuffer buf = new StringBuffer();
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE + "|";
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE + "|");
         String pTentata = "LIMBO";
         for (int i = 0; i < Wordle.getDimensioneParola(); i++) {
-            msg += ConsoleColors.GREEN + "  "
+            buf.append(ConsoleColors.GREEN + "  "
             + pTentata.charAt(i) + "  "
             + ConsoleColors.WHITE + "|"
-            + ConsoleColors.RESET;
+            + ConsoleColors.RESET);
         }
-        msg += "\n" + ConsoleColors.WHITE + " ";
+        buf.append("\n" + ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
         for (int i = 0; i < Wordle.getDimensioneParola(); i++) {
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
+        msg += buf.toString();
         Monitor.stampaGriglia(p);
         String res = outContent.toString(Charset.defaultCharset().toString());
         assertEquals(msg, res);
@@ -487,57 +489,59 @@ public class MonitorTest {
         p.setGrigliaTentativi(0, "ALMBO");
         String ls = System.getProperty("line.separator");
         String msg = ConsoleColors.WHITE + " ";
+        StringBuffer buf = new StringBuffer();
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE + "|";
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE + "|");
         String pTentata = "ALMBO";
-        msg += ConsoleColors.GREY + "  "
+        buf.append(ConsoleColors.GREY + "  "
         + pTentata.charAt(0) + "  "
         + ConsoleColors.WHITE + "|"
-        + ConsoleColors.RESET;
-        msg += ConsoleColors.YELLOW + "  "
+        + ConsoleColors.RESET);
+        buf.append(ConsoleColors.YELLOW + "  "
         + pTentata.charAt(1) + "  "
         + ConsoleColors.WHITE + "|"
-        + ConsoleColors.RESET;
+        + ConsoleColors.RESET);
         for (int i = 2; i < Wordle.getDimensioneParola(); i++) {
-            msg += ConsoleColors.GREEN + "  "
+            buf.append(ConsoleColors.GREEN + "  "
             + pTentata.charAt(i) + "  "
             + ConsoleColors.WHITE + "|"
-            + ConsoleColors.RESET;
+            + ConsoleColors.RESET);
         }
-        msg += "\n" + ConsoleColors.WHITE + " ";
+        buf.append("\n" + ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
         for (int i = 0; i < Wordle.getDimensioneParola(); i++) {
 
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
+        msg += buf.toString();
         Monitor.stampaGriglia(p);
         String res = outContent.toString(Charset.defaultCharset().toString());
         assertEquals(msg, res);
