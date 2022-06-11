@@ -6,8 +6,6 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,11 +42,6 @@ public class MonitorTest {
     private static InputStream sysInBackup = System.in;
 
     /**
-     * L'attributo sc è lo scanner utilizzato nei test.
-     */
-    private static Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
-
-    /**
      * E' il metodo che si occupa di resettare
      * l'ambiente di test dopo l'esecuzione del test.
      */
@@ -56,7 +49,6 @@ public class MonitorTest {
     public static void restoreStreams() {
         System.setOut(sysOutBackup);
         System.setIn(sysInBackup);
-        sc.close();
     }
 
     /**
