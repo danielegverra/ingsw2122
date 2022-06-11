@@ -47,7 +47,7 @@ public class ParoliereTest {
      */
     @BeforeEach
     private void setUpBefore() throws Exception {
-        Wordle.setParolaSegreta(new String("PLUTO"));
+        Wordle.setParolaSegreta("PLUTO");
     }
     /**
      * Operazioni che andranno eseguite sempre a fine test.

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -27,7 +28,7 @@ public class ManagerTest {
      * L'attributo outContent è l'OutputStream
      * utilizzato per il controllo delle stampe.
      */
-    private  ByteArrayOutputStream outContent;
+    private ByteArrayOutputStream outContent;
 
     /**
      * L'attributo in è l'InputStream
@@ -50,11 +51,6 @@ public class ManagerTest {
     private static InputStream sysInBackup = System.in;
 
     /**
-     * L'attributo sc è lo scanner utilizzato nei test.
-     */
-    private static Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
-
-    /**
      * E' il metodo che si occupa di resettare
      * l'ambiente di test dopo l'esecuzione del test.
      */
@@ -62,7 +58,6 @@ public class ManagerTest {
     public static void restoreStreams() {
         System.setOut(sysOutBackup);
         System.setIn(sysInBackup);
-        sc.close();
     }
 
     /**
@@ -90,9 +85,11 @@ public class ManagerTest {
         String ls = System.getProperty("line.separator");
         String msg = "\nInserire un comando:\n> "
         + "Parola segreta assente." + ls;
-        sc = new Scanner(new ByteArrayInputStream(("/MOSTRA").getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(("/MOSTRA").getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.inputComando(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -107,9 +104,12 @@ public class ManagerTest {
         String ls = System.getProperty("line.separator");
         String msg = "\nInserire un comando:\n> "
         + "" + ls;
-        sc = new Scanner(new ByteArrayInputStream((ls + "/MOSTRA").getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(
+            (ls + "/MOSTRA").getBytes(Charset.forName(
+                "UTF-8"))), StandardCharsets.UTF_8);
         Manager.inputComando(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -168,8 +168,11 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/NUOVA";
         s[1] = "MANGO";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -185,8 +188,11 @@ public class ManagerTest {
         String msg = "Parola segreta assente." + ls;
         String[] s = new String[2];
         s[0] = "/NUOVA";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -204,8 +210,11 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/GIOCA";
         s[1] = "CIAO";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -256,41 +265,44 @@ public class ManagerTest {
         + " 2. /abbandona: consente di abbandonare"
         + "la partita a seguito di una conferma positiva dell'utente\n" + ls;
 
+        StringBuffer buf = new StringBuffer();
         msg += ConsoleColors.WHITE + " ";
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
 
         for (int i = 0; i < Wordle.getMaxTentativi(); i++) {
 
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
 
             /*
              * Stampa del separatore inferiore per ogni riga
              */
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
+        msg += buf.toString();
         msg += "\nInserisci il tuo tentativo: " + ls;
         msg += "\nSei sicuro della tua scelta?" + ls
         + "Digita S se vuoi confermare la tua decisione." + ls
@@ -301,9 +313,11 @@ public class ManagerTest {
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
         String command = "/ESCI" + ls + "S";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -354,41 +368,43 @@ public class ManagerTest {
         + " 2. /abbandona: consente di abbandonare"
         + "la partita a seguito di una conferma positiva dell'utente\n" + ls;
 
-        msg += ConsoleColors.WHITE + " ";
+        StringBuffer buf = new StringBuffer();
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
 
         for (int i = 0; i < Wordle.getMaxTentativi(); i++) {
 
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
 
             /*
              * Stampa del separatore inferiore per ogni riga
              */
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
+        msg += buf.toString();
 
         msg += "\nInserisci il tuo tentativo: " + ls;
         msg += "\nSei sicuro della tua scelta?" + ls
@@ -400,9 +416,11 @@ public class ManagerTest {
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
         String command = "/ABBANDONA" + ls + "S";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -454,99 +472,103 @@ public class ManagerTest {
         + "la partita a seguito di una conferma positiva dell'utente\n" + ls;
 
         msg += ConsoleColors.WHITE + " ";
+        StringBuffer buf = new StringBuffer();
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
 
         for (int i = 0; i < Wordle.getMaxTentativi(); i++) {
 
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
 
             /*
              * Stampa del separatore inferiore per ogni riga
              */
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
-        msg += "\nInserisci il tuo tentativo: " + ls;
-        msg += ConsoleColors.WHITE + " ";
+        buf.append("\nInserisci il tuo tentativo: " + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE
         + "|           WORDLE            |"
-        + ConsoleColors.RESET + ls;
-        msg += ConsoleColors.WHITE + " ";
+        + ConsoleColors.RESET + ls);
+        buf.append(ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
-        msg += ConsoleColors.WHITE + "|";
+        buf.append("\n");
+        buf.append(ConsoleColors.WHITE + "|");
         String pTentata = "MANGO";
         for (int i = 0; i < Wordle.getDimensioneParola(); i++) {
-            msg += ConsoleColors.GREEN + "  "
+            buf.append(ConsoleColors.GREEN + "  "
             + pTentata.charAt(i) + "  "
             + ConsoleColors.WHITE + "|"
-            + ConsoleColors.RESET;
+            + ConsoleColors.RESET);
         }
 
-        msg += "\n" + ConsoleColors.WHITE + " ";
+        buf.append("\n" + ConsoleColors.WHITE + " ");
         for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-            msg += ConsoleColors.WHITE
-            + "~~~~~ " + ConsoleColors.RESET;
+            buf.append(ConsoleColors.WHITE
+            + "~~~~~ " + ConsoleColors.RESET);
         }
-        msg += "\n";
+        buf.append("\n");
         for (int i = 0; i < Wordle.getDimensioneParola(); i++) {
 
-            msg += ConsoleColors.WHITE + "|";
+            buf.append(ConsoleColors.WHITE + "|");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.DARK_WHITE
+                buf.append(ConsoleColors.DARK_WHITE
                 + "     " + ConsoleColors.WHITE + "|"
-                + ConsoleColors.RESET;
+                + ConsoleColors.RESET);
             }
 
             /*
              * Stampa del separatore inferiore per ogni riga
              */
-            msg += "\n" + ConsoleColors.WHITE + " ";
+            buf.append("\n" + ConsoleColors.WHITE + " ");
             for (int j = 0; j < Wordle.getDimensioneParola(); j++) {
-                msg += ConsoleColors.WHITE
-                + "~~~~~ " + ConsoleColors.RESET;
+                buf.append(ConsoleColors.WHITE
+                + "~~~~~ " + ConsoleColors.RESET);
             }
-            msg += "\n";
+            buf.append("\n");
         }
+        msg += buf.toString();
 
         msg += "Parola segreta indovinata." + ls
         + "Numero tentativi: " +  1 + ls;
         String[] s = new String[2];
         s[0] = "/GIOCA";
         Wordle.setParolaSegreta("MANGO");
-        sc = new Scanner(new ByteArrayInputStream("MANGO".getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream("MANGO".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -564,8 +586,11 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/HELP";
         s[1] = "CIAO";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -616,8 +641,11 @@ public class ManagerTest {
 
         String[] s = new String[2];
         s[0] = "/HELP";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -635,8 +663,11 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/MOSTRA";
         s[1] = "CIAO";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -653,8 +684,11 @@ public class ManagerTest {
         + Wordle.getParolaSegreta() + ls;
         String[] s = new String[2];
         s[0] = "/MOSTRA";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -673,9 +707,11 @@ public class ManagerTest {
         + "\nSei uscito dal gioco." + ls;
         String[] s = new String[2];
         s[0] = "/ESCI";
-        sc = new Scanner(new ByteArrayInputStream("S".getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -693,8 +729,11 @@ public class ManagerTest {
         String[] s = new String[2];
         s[0] = "/ESCI";
         s[1] = "CIAO";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -710,8 +749,11 @@ public class ManagerTest {
         String msg = "Comando non riconosciuto." + ls;
         String[] s = new String[2];
         s[0] = "SALVE";
+        Scanner sc = new Scanner(new InputStreamReader(
+            System.in, StandardCharsets.UTF_8));
         Manager.parserWordle(sc, s);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -764,8 +806,10 @@ public class ManagerTest {
      */
     @Test
     public void testRichiediConfermaTrue() {
-        sc = new Scanner(new ByteArrayInputStream("S".getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream("S".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         assertTrue(Manager.richiediConferma(sc));
+        sc.close();
     }
 
     /**
@@ -775,8 +819,10 @@ public class ManagerTest {
      */
     @Test
     public void testRichiediConfermaFalse() {
-        sc = new Scanner(new ByteArrayInputStream("N".getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream("N".getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         assertTrue(!Manager.richiediConferma(sc));
+        sc.close();
     }
 
     /**
@@ -795,9 +841,11 @@ public class ManagerTest {
         + "Digita S se vuoi confermare la tua decisione." + ls
         + "Digita N se vuoi tornare a giocare." + ls;
         String command = "BYE" + ls + "S";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.richiediConferma(sc);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -817,9 +865,11 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "@@@@@" + ls + "MANGO";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -840,9 +890,11 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "KEY" + ls + "MANGO";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 
@@ -862,9 +914,11 @@ public class ManagerTest {
         + " da soli caratteri dell'alfabeto:\n"
         + "\nInserisci il tuo tentativo: " + ls;
         String command = "BATMAN" + ls + "MANGO";
-        sc = new Scanner(new ByteArrayInputStream(command.getBytes()));
+        Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
+            Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
         Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
         String res = outContent.toString(Charset.defaultCharset().toString());
+        sc.close();
         assertEquals(msg, res);
     }
 }

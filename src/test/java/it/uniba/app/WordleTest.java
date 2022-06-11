@@ -18,11 +18,11 @@ public class WordleTest {
      /**
      * Variabile costante che rappresenta la dimensione della parola.
      */
-    private final int dimParola = 5;
+    private static final int DIMPAROLA = 5;
      /**
      * Variabile costante che rappresenta il numero massimo di tentativi.
      */
-    private final int maxTent = 6;
+    private static final int MAXTENT = 6;
     @BeforeEach
     private void setUpBefore() throws Exception {
         final Field field =
@@ -203,7 +203,7 @@ public class WordleTest {
     public void testGetDimensioneParolaValida()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int dimensioneParola =  dimParola;
+        int dimensioneParola =  DIMPAROLA;
         final Field field =
         Wordle.getWordle().getClass().getDeclaredField("dimensioneParola");
         // assegno a field il campo dimensioneParola di Wordle
@@ -223,7 +223,7 @@ public class WordleTest {
     public void testSetDimensioneParolaValida()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int dimensioneParola = dimParola + 2;
+        int dimensioneParola = DIMPAROLA + 2;
         final Field field =
         Wordle.getWordle().getClass().getDeclaredField("dimensioneParola");
         // assegno a field il campo dimensioneParola di Wordle
@@ -243,7 +243,7 @@ public class WordleTest {
     public void testGetMaxTentativiValido()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int maxTentativi = maxTent;
+        int maxTentativi = MAXTENT;
         final Field field =
         Wordle.getWordle().getClass().getDeclaredField("maxTentativi");
         // assegno a field il campo maxTentativi di Wordle
@@ -263,7 +263,7 @@ public class WordleTest {
     public void testSetMaxTentativiValido()
     throws NoSuchFieldException, SecurityException,
     IllegalArgumentException, IllegalAccessException {
-        int maxTentativi = maxTent + 1;
+        int maxTentativi = MAXTENT + 1;
         final Field field =
         Wordle.getWordle().getClass().getDeclaredField("maxTentativi");
         // assegno a field il campo maxTentativi di Wordle
