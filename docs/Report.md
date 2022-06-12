@@ -103,7 +103,7 @@ Abbiamo individuato alcune `user story di maggiore rilevanza` di cui sono riport
 
 <h3>Coveralls</h3>
 
-![sommario test](./img/tabellaCoveralls.png)
+![tabella Coveralls](./img/tabellaCoveralls.png)
 Siamo riusciti a raggiungere un ottimo risultato dal punto di vista della copertura dei casi di test del nostro progetto.<br/>
 Gli unici test che non abbiamo potuto coprire e che non ci hanno permesso di raggiungere una copertura totale del 100% sono quelli che richiedevano all'utente un ulteriore input da tastiera in fase di esecuzione del metodo soggetto al test.
 
@@ -156,3 +156,23 @@ Per la realizzazione del progetto il gruppo Stonebraker ha gestito il lavoro in 
     richiesta la revisione di un membro del team esterno all'assegnazione della issue, affinché la correzione avvenisse nel modo più attento possibile.
 
 Il progetto è stato realizzato applicando le metodologie di sviluppo agile e mantenendo sempre fede al `CODE OF CONDUCT` che avevamo stipulato poco dopo la formazione del gruppo.<br/>
+
+<br/><br/><br/>
+
+
+<h2 id="retro"> 9. Analisi retrospettiva </h2>
+
+<h3 id="sp1"> 9.1 Sprint 1 </h3>
+
+A termine dello sprint 1, seguendo le indicazioni del professore, ci siamo riuniti sulla piattaforma Microsoft Teams, che mette a disposizione lo strumento `MS Whiteboard` e il `modello Mad/Sad/Glad`, con i quali abbiamo compilato il documento che riassume le esperienze del team durante il progetto, tenendo conto del lato emotivo e delle sensazioni che ogni componente ha provato, ponendo una particolare attenzione sugli aspetti di `rabbia, tristezza e felicità`.<br/>
+
+![retrospettiva Sprint 1](./img/retrospettivaUno.png)
+
+In seguito c'è stata una fase di confronto da cui sono emersi i pensieri condivisi da tutti i membri del team.<br/>
+`NB.` questi sono stati designati con "`(pensiero condiviso)`" all'interno del modello.
+
+Sicuramente la pressione e le responsabilità hanno pesato parecchio sui nostri sentimenti, ma dal modello emerge chiaramente il fatto che gli aspetti che ci hanno reso felici sono più numerosi e rilevanti di quelli negativi, inoltre abbiamo provato delle emozioni indescrivibili, ad esempio quando abbiamo confermato il nostro primo commit, o quando siamo riusciti a eseguire la prima build e i primi casi di test.<br/>
+Possiamo, quindi, affermare di sentirci parecchio soddisfatti del lavoro svolto.<br/>
+
+L'aspetto fondamentale di questo progetto è stato il fatto di aver ottenuto una, seppur piccola, esperienza lavorativa, migliorando sprint dopo sprint le nostre capacità individuali e di coordinazione con il team.<br/>
+Anche l'utilizzo di strumenti totalmente nuovi e lavorativamente necessari come `Git, GitHub e Docker`, che volevamo imparare a padroneggiare alla perfezione, ci ha spinto a cimentarci con ancor più dedizione in questo progetto.
