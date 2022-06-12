@@ -161,7 +161,6 @@ public final class Manager {
      * Questo metodo permette di eseguire un tentativo.
      * @param sc è lo scanner in input
      * @param d è la lunghezza della parola tentata
-     * @param end indica se la partita è finita o meno
      * @return una stringa contenente il tentativo
      * corretto inserito dall'utente.
      */
