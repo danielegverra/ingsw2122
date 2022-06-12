@@ -63,14 +63,31 @@ I requisiti cui l'applicazione risponde sono:<br/>
 <br/><br/><br/>
 
 
-<h2 id="ood"> 5. OO Design </h2>
-Analizzando le varie necessità e documentazioni abbiamo ritenuto necessario dividere il nostro progetto in 5 classi:<br/>
+<h2 id="syd"> 4. System Design </h2>
 
-+ `Giocatore` e `Paroliere` che si occupano di gestire i comandi di interesse, rispettivamente, dei due tipi di utente;<br/>
-+ `Wordle` gestisce il funzionamento totale del gioco;<br/>
-+ `Partita` gestisce le caratteristiche della singola partita;<br/>
-+ `Manager` che si occupa dell'acquisizione dei comandi dati in input dall'utente.<br/>
-+ `Monitor` che si occupa della restituzione a schermo dei messaggi di output.<br/><br/>
+<h3>Stile architetturale</h3>
+
+Il programma, non essendo molto complesso, non è stato sviluppato con uno stile architetturale predefinito, tuttavia si possono trovare alcuni punti in comune con il modello MVC.<br/>
+Analizzando le varie necessità e documentazioni abbiamo ritenuto necessario dividere il nostro progetto in 6 classi:<br/>
++ `Giocatore` e `Paroliere` [**control**]<br/>
+    si occupano di gestire i comandi di interesse, rispettivamente, del giocatore e del paroliere, controllando la loro logica e il loro funzionamento.
++ `Wordle` [**entity/control**]<br/>
+    è una classe singoletto che assicura il corretto funzionamento del programma, mediante una grande varietà di controlli, contiene anche degli attributi che poi verranno utilizzati per l'istanziazione della classe Partita;<br/>
++ `Partita` [**entity**]<br/>
+    viene istanziata ogni qualvolta il giocatore decida di iniziare una nuova partita, al suo interno sono contenuti tutti i dati necessari a mantenere le informazioni sui tentativi già effettuati;<br/>
++ `Manager` [**boundary**]<br/>
+    si occupa dell'acquisizione di tutti gli input da tastiera da parte dell'utente, come i comandi o i tentativi (questi ultimi solo quando è in corso una partita), controllandone la correttezza sintattica, mediante lo scanner, e semantica, mediante il parser.<br/>
++ `Monitor` [**boundary**]<br/>
+    si occupa della restituzione di qualsiasi tipo di messaggio a schermo all'utente, da semplici affermazioni riguardanti l'inserimento di comandi o tentativi fino alla stampa della griglia di gioco.<br/><br/>
+
+`//commento`
+**rivedere paragrafo e aggiungere paragrafo delle decisioni**
+
+
+<br/><br/><br/>
+
+
+<h2 id="ood"> 5. OO Design </h2>
 
 Abbiamo individuato alcune `user story di maggiore rilevanza` di cui sono riportati diagrammi delle classi e diagrammi di sequenza:<br/>
 
