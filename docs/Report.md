@@ -39,10 +39,6 @@ Responsabile del progetto il Professore Filippo Lanubile.
 
 In termini di **portabilità**:
 + Grazie a `Docker` la distribuzione dell'applicazione è automatizzata, tramite quest'ultimo è possibile ottenere un'astrazione a livello di sistema operativo che consente l'utilizzo dell'applicazione su qualunque macchina.<br/>
-+ è possibile scaricare il programma tramite il comando da console:<br/>
-    `docker pull ghcr.io/softeng2122-inf-uniba/wordle-stonebraker:latest`
-+ è possibile eseguire il programma tramite il comando da console:<br/>
-    `docker run -it --rm ghcr.io/softeng2122-inf-uniba/wordle-stonebraker:latest`
 
 In termini di **usabilità**:
 + il corretto funzionamento dell'applicazione ha come requisito imprescindibile la codifica UTF-8 da parte della console utilizzata(Linux terminal, MacOS terminal, Windows Powershell e Git Bash, se si utilizza quest'ultimo il comando ha prefisso *winpty*).<br/>
@@ -125,3 +121,21 @@ Qualsiasi bug segnalatoci dall'apposito tool di Gradle, Spotbugs, è stato pront
 <h3>Checkstyle</h3>
 
 Abbiamo provveduto a rimuovere dal nostro codice qualsiasi errore stilistico, indicatoci dal tool di Gradle: Checkstyle.
+
+<br/><br/><br/>
+
+
+<h2 id="mut"> 7. Manuale utente </h2>
+
+Il nostro software permette all'utente di giocare a Wordle inserendo, una volta in partita, le parole che si pensano possano essere quella nascosta.<br/>
+Per evitare il problema della monotonia è concesso al paroliere di impostare nuove parole segrete per poter giocare partite sempre differenti.<br/><br/>
+
+L'utente che utilizza l'applicazione dovrà eseguire i seguenti passaggi:<br/>
++ Eseguire una console tra quelle previste nel <a href=#rspec>paragrafo 3</a>;
++ Seguire i passaggi docker esplicitati:
+> + è possibile scaricare il programma tramite il comando da console:<br/>
+    `docker pull ghcr.io/softeng2122-inf-uniba/wordle-stonebraker:latest`
+> + è possibile eseguire il programma tramite il comando da console:<br/>
+    `docker run -it --rm ghcr.io/softeng2122-inf-uniba/wordle-stonebraker:latest`
++ Una volta avviato il programma è comunque possibile consultare una guida in-app
+    digitando il comando `/help`.
