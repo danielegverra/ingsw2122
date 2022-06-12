@@ -30,7 +30,7 @@ public final class Giocatore {
             while (p.getTentativiEffettuati() < maxTent && !partitaFinita) {
                 String parolaTentata;
                 int lenght = p.getParola().length();
-                parolaTentata = Manager.tentativo(sc, lenght, partitaFinita);
+                parolaTentata = Manager.tentativo(sc, lenght);
                 if (parolaTentata.equals("/ESCI")) {
                     return;
                 } else if (parolaTentata.equals("/ABBANDONA")) {
