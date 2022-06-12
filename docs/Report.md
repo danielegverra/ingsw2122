@@ -139,3 +139,20 @@ L'utente che utilizza l'applicazione dovrà eseguire i seguenti passaggi:<br/>
     `docker run -it --rm ghcr.io/softeng2122-inf-uniba/wordle-stonebraker:latest`
 + Una volta avviato il programma è comunque possibile consultare una guida in-app
     digitando il comando `/help`.
+
+<br/><br/><br/>
+
+
+<h2 id="pso"> 8. Processo di sviluppo e organizzazione del lavoro </h2>
+
+Per la realizzazione del progetto il gruppo Stonebraker ha gestito il lavoro in modo preciso e metodico, seguendo i criteri riportati subito sotto:<br/>
++ Dopo il lancio di ogni sprint è stata organizzata una chiamata teams avente come
+    scopo la comprensione dei requisiti;
++ Il lavoro è stato suddiviso tenendo conto delle capacità individuali e delle
+    conoscenze di ogni membro del team, ma cercando di mantenere comunque un equo apporto di lavoro e assegnando un solo componente del team ad ogni issue, ad eccezioni di poche, ritenute più impegnative;
++ Nonostante la lontananza, il team ha saputo organizzare al meglio i meeting
+    giornalieri di circa 15 minuti utili alla coordinazione del lavoro di tutti i componenti e alla risoluzione di problemi comuni, adoperando strumenti essenziali come Discord, Microsoft Teams e Whatsapp;
++ Per mantenere una buona qualità del software, per ogni Pull Request è stata
+    richiesta la revisione di un membro del team esterno all'assegnazione della issue, affinché la correzione avvenisse nel modo più attento possibile.
+
+Il progetto è stato realizzato applicando le metodologie di sviluppo agile e mantenendo sempre fede al `CODE OF CONDUCT` che avevamo stipulato poco dopo la formazione del gruppo.<br/>
