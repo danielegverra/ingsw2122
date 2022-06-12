@@ -4,7 +4,13 @@
 ## 3. - <a href=#rspec> REQUISITI SPECIFICI</a>
 #### 3.1 - <a href=#rnfunz> REQUISITI NON FUNZIONALI</a>
 #### 3.2 - <a href=#rfunz> REQUISITI FUNZIONALI</a>
-## 4. - <a href=#ood> OO DESIGN</a>
+## 4. - <a href=#syd> SYSTEM DESIGN</a>
+## 5. - <a href=#ood> OO DESIGN</a>
+## 6. - <a href=#test> RIEPILOGO DEL TEST</a>
+## 7. - <a href=#mut> MANUALE UTENTE</a>
+## 8. - <a href=#pso> PROCESSO DI SVILUPPO E ORGANIZZAZIONE DEL LAVORO</a>
+## 9. - <a href=#retro> ANALISI RETROSPETTIVA</a>
+#### 9.1 - <a href=#sp1> SPRINT 1</a>
 
 <br/><br/><br/>
 
@@ -20,6 +26,8 @@ Responsabile del progetto il Professore Filippo Lanubile.
 
 
 <h2 id="modd"> 2. Modello di dominio </h2>
+
+<h3>Diagramma concettuale </h3>
 
 ![Diagramma concettuale](../drawings/ModelloDominio.png)
 
@@ -59,18 +67,16 @@ I requisiti cui l'applicazione risponde sono:<br/>
 <br/><br/><br/>
 
 
-<h2 id="ood"> 4. OO Design </h2>
+<h2 id="ood"> 5. OO Design </h2>
 Analizzando le varie necessità e documentazioni abbiamo ritenuto necessario dividere il nostro progetto in 5 classi:<br/>
 
 + `Giocatore` e `Paroliere` che si occupano di gestire i comandi di interesse, rispettivamente, dei due tipi di utente;<br/>
-+ `Wordle` gestisce il funzionamento totale del gioco;
++ `Wordle` gestisce il funzionamento totale del gioco;<br/>
 + `Partita` gestisce le caratteristiche della singola partita;<br/>
 + `Manager` che si occupa dell'acquisizione dei comandi dati in input dall'utente.<br/>
 + `Monitor` che si occupa della restituzione a schermo dei messaggi di output.<br/><br/>
 
 Abbiamo individuato alcune `user story di maggiore rilevanza` di cui sono riportati diagrammi delle classi e diagrammi di sequenza:<br/>
-
-<br/>
 
 <h3>impostaParolaSegreta </h3>
 
@@ -93,3 +99,29 @@ Abbiamo individuato alcune `user story di maggiore rilevanza` di cui sono riport
 ![Classi_inizia](../drawings/DiagrammaClassi_iniziaPartita-tentativo.png)
 
 ![Sequenza_inizia](../drawings/DiagrammaSequenza_iniziaPartita-tentativo.PNG)
+
+<br/><br/><br/>
+
+
+<h2 id="test"> 6. Riepilogo del test </h2>
+
+<h3>Coveralls</h3>
+
+![sommario test](./img/tabellaCoveralls.png)
+Siamo riusciti a raggiungere un ottimo risultato dal punto di vista della copertura dei casi di test del nostro progetto.<br/>
+Gli unici test che non abbiamo potuto coprire e che non ci hanno permesso di raggiungere una copertura totale del 100% sono quelli che richiedevano all'utente un ulteriore input da tastiera in fase di esecuzione del metodo soggetto al test.
+
+<h3>Sommario test</h3>
+
+![sommario test](./img/numeroTest.png)
+Implementando `85 casi di test` siamo arrivati al seguente risultato:
++ 289 of 299 relevant lines covered (96.66%)<br/>
+[![Coverage Status](https://coveralls.io/repos/github/softeng2122-inf-uniba/progetto2122-stonebraker/badge.svg?branch=master&t=70jvKp)](https://coveralls.io/github/softeng2122-inf-uniba/progetto2122-stonebraker?branch=master)
+
+<h3>Spotbugs</h3>
+
+Qualsiasi bug segnalatoci dall'apposito tool di Gradle, Spotbugs, è stato prontamente rimosso.
+
+<h3>Checkstyle</h3>
+
+Abbiamo provveduto a rimuovere dal nostro codice qualsiasi errore stilistico, indicatoci dal tool di Gradle: Checkstyle.
