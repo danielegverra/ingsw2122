@@ -867,7 +867,7 @@ public class ManagerTest {
         String command = "@@@@@" + ls + "MANGO";
         Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
             Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
-        Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
+        Manager.tentativo(sc, Wordle.getDimensioneParola());
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
         assertEquals(msg, res);
@@ -892,7 +892,7 @@ public class ManagerTest {
         String command = "KEY" + ls + "MANGO";
         Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
             Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
-        Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
+        Manager.tentativo(sc, Wordle.getDimensioneParola());
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
         assertEquals(msg, res);
@@ -916,7 +916,7 @@ public class ManagerTest {
         String command = "BATMAN" + ls + "MANGO";
         Scanner sc = new Scanner(new ByteArrayInputStream(command.getBytes(
             Charset.forName("UTF-8"))), StandardCharsets.UTF_8);
-        Manager.tentativo(sc, Wordle.getDimensioneParola(), false);
+        Manager.tentativo(sc, Wordle.getDimensioneParola());
         String res = outContent.toString(Charset.defaultCharset().toString());
         sc.close();
         assertEquals(msg, res);

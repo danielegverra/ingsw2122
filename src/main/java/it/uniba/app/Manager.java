@@ -165,7 +165,7 @@ public final class Manager {
      * @return una stringa contenente il tentativo
      * corretto inserito dall'utente.
      */
-    static String tentativo(final Scanner sc, final int d, final Boolean end) {
+    static String tentativo(final Scanner sc, final int d) {
         String attpt;
         do {
             Monitor.messaggi("inseriscitentativo");
@@ -190,7 +190,7 @@ public final class Manager {
                 Monitor.messaggi("tentativoeccessivo");
                 Monitor.messaggi("paramparola", Wordle.getDimensioneParola());
             }
-        } while ((attpt.length() != d || !Manager.parolaValida(attpt)) && !end);
+        } while ((attpt.length() != d || !Manager.parolaValida(attpt)));
 
         return attpt;
     }
