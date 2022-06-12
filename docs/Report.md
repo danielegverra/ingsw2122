@@ -80,10 +80,6 @@ Analizzando le varie necessità e documentazioni abbiamo ritenuto necessario div
 + `Monitor` [**boundary**]<br/>
     si occupa della restituzione di qualsiasi tipo di messaggio a schermo all'utente, da semplici affermazioni riguardanti l'inserimento di comandi o tentativi fino alla stampa della griglia di gioco.<br/><br/>
 
-`//commento`
-**rivedere paragrafo e aggiungere paragrafo delle decisioni**
-
-
 <br/><br/><br/>
 
 
